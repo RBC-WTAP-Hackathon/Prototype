@@ -196,7 +196,19 @@ def build_feedback_modal() -> dict:
     }
 
 
-def build_intro_modal() -> dict:
+def build_intro_modal(who: str | None = None, why: str | None = None) -> dict:
+    """Intro request form. `who` / `why` pre-fill the fields (e.g. from a check-in support offer)."""
+    who_input = {"type": "plain_text_input", "action_id": "who_input", "max_length": 300}
+    if who:
+        who_input["initial_value"] = who[:300]
+    why_input = {
+        "type": "plain_text_input",
+        "action_id": "why_input",
+        "multiline": True,
+        "max_length": 1000,
+    }
+    if why:
+        why_input["initial_value"] = why[:1000]
     return {
         "type": "modal",
         "callback_id": "intro_submission",
@@ -209,19 +221,14 @@ def build_intro_modal() -> dict:
                 "block_id": "who",
                 "label": {"type": "plain_text", "text": "Who would you like to meet?"},
                 "hint": {"type": "plain_text", "text": "A person, team, role, or area, e.g. \"someone in AI research\""},
-                "element": {"type": "plain_text_input", "action_id": "who_input", "max_length": 300},
+                "element": who_input,
             },
             {
                 "type": "input",
                 "block_id": "why",
                 "optional": True,
                 "label": {"type": "plain_text", "text": "What would you like to talk about?"},
-                "element": {
-                    "type": "plain_text_input",
-                    "action_id": "why_input",
-                    "multiline": True,
-                    "max_length": 1000,
-                },
+                "element": why_input,
             },
         ],
     }

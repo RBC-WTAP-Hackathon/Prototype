@@ -6,6 +6,7 @@ from slack_bolt.context.async_context import AsyncBoltContext
 from slack_sdk.web.async_client import AsyncWebClient
 
 from listeners.chat_cleaner import clear_dm_and_confirm
+from listeners.support import TECH_WHO
 from listeners.views.menu_builder import (
     build_connect_modal,
     build_feedback_modal,
@@ -62,3 +63,11 @@ async def handle_clear_chat(
 
 
 _background: set[asyncio.Task] = set()
+
+
+async def handle_support_connect_technical(ack: Ack, body: dict, client: AsyncWebClient, logger: Logger):
+    """From the check-in support DM: open the intro form pre-filled for a technical mentor."""
+    await ack()
+    context = body["actions"][0].get("value", "")
+    why = "" if context == "-" else f"I've been feeling a bit lost: {context}"
+    await _open(body, client, build_intro_modal(who=TECH_WHO, why=why), logger, "technical intro")
