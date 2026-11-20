@@ -1,0 +1,847 @@
+<claude-code-hint v="1" type="plugin" value="slack@claude-plugins-official" />
+
+App Manifest
+   Updated app manifest for "pulse-bot" in "talent-pulse"
+
+App Install
+   Installing "pulse-bot (local)" app to "talent-pulse"
+   Finished in 0.8s
+sd0ckq1g3z9p_user of talent-pulse
+python-dotenv could not parse statement starting at line 1
+WARNING:slack_bolt.AsyncApp:As you gave `client` as well, `token` will be unused.
+DEBUG:asyncio:Using selector: KqueueSelector
+DEBUG:tzlocal:/etc/localtime found
+DEBUG:tzlocal:1 found:
+ {'/etc/localtime is a symlink to': 'America/Toronto'}
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Added job "send_reminders" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/apps.connections.open, params: {}, files: {}, data: {}, json: {}, proxy: {}, headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2026-11-23 09:00:00-05:00 (in 252481.245570 seconds)
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 3.857ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10e01f8c0> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10e01f8c0>: SSL handshake took 32.4 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=10, family=2, type=1, proto=6, laddr=('10.230.16.158', 63794), raddr=('3.134.44.134', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10e205090>, <aiohttp.client_proto.ResponseHandler object at 0x10e1dae80>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:51:59 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': 'e44bc98f120884a6fd2256281c9edafa', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'x-robots-tag': 'noindex,nofollow', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-accepted-oauth-scopes': 'connections:write', 'x-oauth-scopes': 'connections:write', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': '0193d2a2-aaeb-4583-93a9-27f0d97c5ba5', 'Access-Control-Allow-Origin': '*', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-07e0de9a05da131fe,ingress-edge-cmh-prod-03a2b226b5277a86f', 'Content-Encoding': 'gzip', 'Content-Length': '165', 'x-envoy-upstream-service-time': '278', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-n4vgjq43m5lu', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True, 'url': 'wss://wss-primary.slack.com/link/?ticket=0814c738-71e9-4dc7-9c95-3ec8e2779e9b&app_id=085073cc15bdacc5c7b468805b8d9f55f476f31a85ba613ffa3993185e5f976b'}
+DEBUG:asyncio:Get address info wss-primary.slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info wss-primary.slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 23.267ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('54.189.250.135', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.165.254.123', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('52.40.255.127', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('52.41.113.249', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.83.81.122', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('44.235.135.203', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.82.187.142', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('52.11.79.54', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10e01ef20> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10e01ef20>: SSL handshake took 96.3 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=10, family=2, type=1, proto=6, laddr=('10.230.16.158', 63795), raddr=('54.189.250.135', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10e1cee50>, <aiohttp.client_proto.ResponseHandler object at 0x10e1162b0>)
+INFO:slack_bolt.AsyncApp:A new session (s_283123288) has been established
+DEBUG:slack_bolt.AsyncApp:Sending a ping message with the newly established connection (s_283123288)...
+DEBUG:slack_bolt.AsyncApp:A new monitor_current_session() executor has been recreated for s_283123288
+DEBUG:slack_bolt.AsyncApp:A new receive_messages() executor has been recreated for s_283123288
+INFO:slack_bolt.AsyncApp:⚡️ Bolt app is running!
+DEBUG:slack_bolt.AsyncApp:A new monitor_current_session() execution loop for s_283123288 started
+DEBUG:slack_bolt.AsyncApp:A new receive_messages() execution loop with s_283123288 started
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"type":"hello","num_connections":1,"debug_info":{"host":"applink-5","build_number":31,"approximate_connection_time":18060},"connection_info":{"app_id":"A0CKRURK42Y"}}', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: hello, envelope_id: None, session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: hello, envelope_id: None, session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795189919.598352', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795189929.600322', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795189939.6014988', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795189949.6031601', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"envelope_id":"3dba2f23-ca52-446a-8fca-7325c3a83473","payload":{"token":"yzV0DgKAc6ypwx08S7CrXuPF","team_id":"T0CKL65CGGN","team_domain":"e0ck6pf7dgx-ytzn30yz","channel_id":"C0CKN6JQ0V8","channel_name":"talent-pulse","user_id":"U0CKFTU426P","user_name":"sd0ckq1g3z9p_user","command":"\\/checkin","text":"","api_app_id":"A0CKRURK42Y","is_enterprise_install":"true","enterprise_id":"E0CK6PF7DGX","enterprise_name":"talent-pulse","response_url":"https:\\/\\/hooks.slack.com\\/commands\\/E0CK6PF7DGX\\/12696803180128\\/xjFoAU2ahtblbUPPcgbmyuhW","trigger_id":"12663137776453.12666209424566.87e6ff66d903df99ab71588c8c4f5a1a"},"type":"slash_commands","accepts_response_payload":true}', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: slash_commands, envelope_id: 3dba2f23-ca52-446a-8fca-7325c3a83473, session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ssl_check.async_ssl_check.AsyncSslCheck
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.request_verification.async_request_verification.AsyncRequestVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.authorization.async_single_team_authorization.AsyncSingleTeamAuthorization
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/auth.test, params: {'team_id': 'T0CKL65CGGN'}, files: {}, data: {}, json: {}, proxy: {}, headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 1.877ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10e20cb60> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10e20cb60>: SSL handshake took 32.7 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=11, family=2, type=1, proto=6, laddr=('10.230.16.158', 63816), raddr=('3.143.53.1', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10e2fd020>, <aiohttp.client_proto.ResponseHandler object at 0x10e05bc00>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:52:31 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': '28a71bb2bf8fce4a6f466b16c142ef8f', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-oauth-scopes': 'app_mentions:read,channels:history,chat:write,groups:history,im:history,im:read,im:write,reactions:write,reactions:read,users:read,assistant:write,commands', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': 'eb0fca9e-dbe3-44a9-b8eb-7510583eb640', 'Access-Control-Allow-Origin': '*', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-00d328a284b85ad3c,ingress-edge-cmh-prod-0c3070f770cbbc353', 'Content-Encoding': 'gzip', 'Content-Length': '183', 'x-envoy-upstream-service-time': '27', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-6cr47q27ku9r', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True, 'url': 'https://sandbox-b67gx445.enterprise.slack.com/', 'team': 'talent-pulse', 'user': 'pulsebot_local', 'team_id': 'E0CK6PF7DGX', 'user_id': 'U0CKL93B346', 'bot_id': 'B0CKRURUE7N', 'enterprise_id': 'E0CK6PF7DGX', 'is_enterprise_install': True}
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ignoring_self_events.async_ignoring_self_events.AsyncIgnoringSelfEvents
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.url_verification.async_url_verification.AsyncUrlVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.attaching_function_token.async_attaching_function_token.AsyncAttachingFunctionToken
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_feedback_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_checkin_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_report_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_checkin_command ...
+DEBUG:slack_bolt.AsyncApp:Running listener: handle_checkin_command ...
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/views.open, params: {}, files: {}, data: {}, json: {'trigger_id': '12663137776453.12666209424566.87e6ff66d903df99ab71588c8c4f5a1a', 'view': {'type': 'modal', 'callback_id': 'checkin_submission', 'title': {'type': 'plain_text', 'text': 'Weekly Check-In'}, 'submit': {'type': 'plain_text', 'text': 'Submit'}, 'close': {'type': 'plain_text', 'text': 'Cancel'}, 'blocks': [{'type': 'input', 'block_id': 'pulse_rating', 'label': {'type': 'plain_text', 'text': 'How are you feeling this week?'}, 'element': {'type': 'radio_buttons', 'action_id': 'pulse_rating_select', 'options': [{'text': {'type': 'plain_text', 'text': '1 - Struggling'}, 'value': '1'}, {'text': {'type': 'plain_text', 'text': '2 - Having a tough time'}, 'value': '2'}, {'text': {'type': 'plain_text', 'text': '3 - Doing okay'}, 'value': '3'}, {'text': {'type': 'plain_text', 'text': '4 - Good'}, 'value': '4'}, {'text': {'type': 'plain_text', 'text': '5 - Thriving'}, 'value': '5'}]}}, {'type': 'input', 'block_id': 'topic', 'label': {'type': 'plain_text', 'text': "What's this check-in mostly about?"}, 'element': {'type': 'static_select', 'action_id': 'topic_select', 'placeholder': {'type': 'plain_text', 'text': 'Pick a topic'}, 'options': [{'text': {'type': 'plain_text', 'text': 'Mentorship'}, 'value': 'mentorship'}, {'text': {'type': 'plain_text', 'text': 'Onboarding'}, 'value': 'onboarding'}, {'text': {'type': 'plain_text', 'text': 'Team Dynamics'}, 'value': 'team_dynamics'}, {'text': {'type': 'plain_text', 'text': 'Career Dev'}, 'value': 'career_dev'}]}}, {'type': 'input', 'block_id': 'notes', 'optional': True, 'label': {'type': 'plain_text', 'text': "Anything you'd like to share?"}, 'element': {'type': 'plain_text_input', 'action_id': 'notes_input', 'multiline': True, 'max_length': 1500, 'placeholder': {'type': 'plain_text', 'text': 'Totally optional, just a few sentences'}}}]}, 'team_id': 'T0CKL65CGGN'}, proxy: {}, headers: {'Content-Type': 'application/json;charset=utf-8', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 1.883ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443))]
+DEBUG:slack_bolt.AsyncApp:Responding with status: 200 body: "" (12 millis)
+DEBUG:slack_bolt.AsyncApp:Sending a message: {"envelope_id": "3dba2f23-ca52-446a-8fca-7325c3a83473"} from session: s_283123288
+DEBUG:slack_bolt.AsyncApp:Response time: 249 milliseconds
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: slash_commands, envelope_id: 3dba2f23-ca52-446a-8fca-7325c3a83473, session: s_283123288)
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10e01e6e0> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10e01e6e0>: SSL handshake took 32.6 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=11, family=2, type=1, proto=6, laddr=('10.230.16.158', 63817), raddr=('3.143.53.1', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10e318760>, <aiohttp.client_proto.ResponseHandler object at 0x10e300330>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:52:31 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': 'cb61c6093b8ad36edb9141c29bcc4acb', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-oauth-scopes': 'app_mentions:read,channels:history,chat:write,groups:history,im:history,im:read,im:write,reactions:write,reactions:read,users:read,assistant:write,commands', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': '475ac198-b2a9-41f1-94af-ae59498f8998', 'Access-Control-Allow-Origin': '*', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-07414aacde23eb1de,ingress-edge-cmh-canary-prod-0a1b8eb95eeed98f2', 'Content-Encoding': 'gzip', 'Content-Length': '790', 'x-envoy-upstream-service-time': '108', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-51xg2k7jg8x1', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True, 'view': {'id': 'V0CKG5VR4PM', 'team_id': 'T0CKL65CGGN', 'type': 'modal', 'blocks': [{'type': 'input', 'block_id': 'pulse_rating', 'label': {'type': 'plain_text', 'text': 'How are you feeling this week?', 'emoji': True}, 'optional': False, 'dispatch_action': False, 'element': {'type': 'radio_buttons', 'action_id': 'pulse_rating_select', 'options': [{'text': {'type': 'plain_text', 'text': '1 - Struggling', 'emoji': True}, 'value': '1'}, {'text': {'type': 'plain_text', 'text': '2 - Having a tough time', 'emoji': True}, 'value': '2'}, {'text': {'type': 'plain_text', 'text': '3 - Doing okay', 'emoji': True}, 'value': '3'}, {'text': {'type': 'plain_text', 'text': '4 - Good', 'emoji': True}, 'value': '4'}, {'text': {'type': 'plain_text', 'text': '5 - Thriving', 'emoji': True}, 'value': '5'}]}}, {'type': 'input', 'block_id': 'topic', 'label': {'type': 'plain_text', 'text': "What's this check-in mostly about?", 'emoji': True}, 'optional': False, 'dispatch_action': False, 'element': {'type': 'static_select', 'action_id': 'topic_select', 'placeholder': {'type': 'plain_text', 'text': 'Pick a topic', 'emoji': True}, 'options': [{'text': {'type': 'plain_text', 'text': 'Mentorship', 'emoji': True}, 'value': 'mentorship'}, {'text': {'type': 'plain_text', 'text': 'Onboarding', 'emoji': True}, 'value': 'onboarding'}, {'text': {'type': 'plain_text', 'text': 'Team Dynamics', 'emoji': True}, 'value': 'team_dynamics'}, {'text': {'type': 'plain_text', 'text': 'Career Dev', 'emoji': True}, 'value': 'career_dev'}]}}, {'type': 'input', 'block_id': 'notes', 'label': {'type': 'plain_text', 'text': "Anything you'd like to share?", 'emoji': True}, 'optional': True, 'dispatch_action': False, 'element': {'type': 'plain_text_input', 'action_id': 'notes_input', 'placeholder': {'type': 'plain_text', 'text': 'Totally optional, just a few sentences', 'emoji': True}, 'multiline': True, 'max_length': 1500, 'dispatch_action_config': {'trigger_actions_on': ['on_enter_pressed']}}}], 'private_metadata': '', 'callback_id': 'checkin_submission', 'state': {'values': {}}, 'hash': '1795189951.pMtkfrvZ', 'title': {'type': 'plain_text', 'text': 'Weekly Check-In', 'emoji': True}, 'clear_on_close': False, 'notify_on_close': False, 'close': {'type': 'plain_text', 'text': 'Cancel', 'emoji': True}, 'submit': {'type': 'plain_text', 'text': 'Submit', 'emoji': True}, 'previous_view_id': None, 'root_view_id': 'V0CKG5VR4PM', 'app_id': 'A0CKRURK42Y', 'external_id': '', 'app_installed_team_id': 'E0CK6PF7DGX', 'bot_id': 'B0CKRURUE7N'}}
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795189959.604626', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795189969.6061141', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795189979.607572', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795189989.6092858', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795189999.6100018', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190009.6113899', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190019.6129332', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190029.614398', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190039.615896', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190049.617259', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190059.618724', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190069.6201909', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190079.621608', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190089.623059', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190099.624544', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190109.6261', extra: , session: s_283123288)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-5', extra: , session: s_283123288)
+App change detected: /Users/abbywang/Documents/Prototype/pulse-bot/listeners/events/app_home_opened.py, restarting server...
+DEBUG:slack_bolt.AsyncApp:The running receive_messages task for s_283123288 is now cancelled
+DEBUG:slack_bolt.AsyncApp:The monitor_current_session task for s_283123288 is now cancelled
+DEBUG:asyncio:Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 31, in main
+    await handler.start_async()
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_bolt/adapter/socket_mode/async_base_handler.py", line 50, in start_async
+    await asyncio.sleep(float("inf"))
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/tasks.py", line 720, in sleep
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 44, in <module>
+    start(os.getcwd())
+    ~~~~~^^^^^^^^^^^^^
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 37, in start
+    runpy.run_path(entrypoint_path, run_name="__main__")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 294, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 35, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 196, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 124, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client.py:527: ResourceWarning: Unclosed client session <aiohttp.client.ClientSession object at 0x10e01dd40>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x10e01dd40>
+source_traceback: Object created at (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 44, in <module>
+    start(os.getcwd())
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 37, in start
+    runpy.run_path(entrypoint_path, run_name="__main__")
+  File "<frozen runpy>", line 294, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 35, in <module>
+    asyncio.run(main())
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 196, in run
+    return runner.run(main)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 2052, in _run_once
+    handle._run()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 30, in main
+    handler = AsyncSocketModeHandler(app, os.environ.get("SLACK_APP_TOKEN"))
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_bolt/adapter/socket_mode/aiohttp/__init__.py", line 82, in __init__
+    self.client = SocketModeClient(
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_sdk/socket_mode/aiohttp/__init__.py", line 130, in __init__
+    self.aiohttp_client_session = aiohttp.ClientSession(loop=loop)
+Exception ignored in: <function ClientResponse.__del__ at 0x10badfad0>
+Traceback (most recent call last):
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client_reqrep.py", line 663, in __del__
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py", line 210, in release
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py", line 830, in _release
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client_proto.py", line 94, in close
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/sslproto.py", line 116, in close
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/sslproto.py", line 627, in _start_shutdown
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 799, in call_later
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 812, in call_at
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 556, in _check_closed
+RuntimeError: Event loop is closed
+/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py:156: ResourceWarning: Unclosed connection Connection<ConnectionKey(host='wss-primary.slack.com', port=443, is_ssl=True, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None, server_hostname=None)>
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/selector_events.py:876: ResourceWarning: unclosed transport <_SelectorSocketTransport fd=10>
+python-dotenv could not parse statement starting at line 1
+WARNING:slack_bolt.AsyncApp:As you gave `client` as well, `token` will be unused.
+DEBUG:asyncio:Using selector: KqueueSelector
+DEBUG:tzlocal:/etc/localtime found
+DEBUG:tzlocal:1 found:
+ {'/etc/localtime is a symlink to': 'America/Toronto'}
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Added job "send_reminders" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/apps.connections.open, params: {}, files: {}, data: {}, json: {}, proxy: {}, headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2026-11-23 09:00:00-05:00 (in 252279.754585 seconds)
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 4.030ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10d93f1e0> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10d93f1e0>: SSL handshake took 34.5 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=10, family=2, type=1, proto=6, laddr=('10.230.16.158', 63898), raddr=('18.221.229.81', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10db52d70>, <aiohttp.client_proto.ResponseHandler object at 0x10db58450>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:55:20 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': '64c8911e0254ebd92243e01c74c1b10b', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'x-robots-tag': 'noindex,nofollow', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-accepted-oauth-scopes': 'connections:write', 'x-oauth-scopes': 'connections:write', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': '6f185771-6590-4b88-97fc-1564443edd60', 'Access-Control-Allow-Origin': '*', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-0dc76eff8b73dca2d,ingress-edge-cmh-prod-0b2aae550bb7d276e', 'Content-Encoding': 'gzip', 'Content-Length': '165', 'x-envoy-upstream-service-time': '20', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-wwjd1eqirma9', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True, 'url': 'wss://wss-primary.slack.com/link/?ticket=7e3e4a3a-2417-4be2-ac68-9b5616a35892&app_id=085073cc15bdacc5c7b468805b8d9f55f476f31a85ba613ffa3993185e5f976b'}
+DEBUG:asyncio:Get address info wss-primary.slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info wss-primary.slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 18.596ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.82.187.142', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.165.254.123', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('44.238.43.4', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.83.181.24', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('44.235.135.203', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('52.40.255.127', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('52.41.113.249', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('54.189.250.135', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10d93ec60> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10d93ec60>: SSL handshake took 129.1 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=10, family=2, type=1, proto=6, laddr=('10.230.16.158', 63900), raddr=('35.82.187.142', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10daeebb0>, <aiohttp.client_proto.ResponseHandler object at 0x10dae7c00>)
+INFO:slack_bolt.AsyncApp:A new session (s_282672772) has been established
+DEBUG:slack_bolt.AsyncApp:Sending a ping message with the newly established connection (s_282672772)...
+DEBUG:slack_bolt.AsyncApp:A new monitor_current_session() executor has been recreated for s_282672772
+DEBUG:slack_bolt.AsyncApp:A new receive_messages() executor has been recreated for s_282672772
+INFO:slack_bolt.AsyncApp:⚡️ Bolt app is running!
+DEBUG:slack_bolt.AsyncApp:A new monitor_current_session() execution loop for s_282672772 started
+DEBUG:slack_bolt.AsyncApp:A new receive_messages() execution loop with s_282672772 started
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"type":"hello","num_connections":1,"debug_info":{"host":"applink-6","build_number":31,"approximate_connection_time":18060},"connection_info":{"app_id":"A0CKRURK42Y"}}', extra: , session: s_282672772)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_282672772)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: hello, envelope_id: None, session: s_282672772)
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: hello, envelope_id: None, session: s_282672772)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190121.391146', extra: , session: s_282672772)
+App change detected: /Users/abbywang/Documents/Prototype/pulse-bot/listeners/events/app_home_opened.py, restarting server...
+DEBUG:slack_bolt.AsyncApp:The running receive_messages task for s_282672772 is now cancelled
+DEBUG:slack_bolt.AsyncApp:The monitor_current_session task for s_282672772 is now cancelled
+DEBUG:asyncio:Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 31, in main
+    await handler.start_async()
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_bolt/adapter/socket_mode/async_base_handler.py", line 50, in start_async
+    await asyncio.sleep(float("inf"))
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/tasks.py", line 720, in sleep
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 44, in <module>
+    start(os.getcwd())
+    ~~~~~^^^^^^^^^^^^^
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 37, in start
+    runpy.run_path(entrypoint_path, run_name="__main__")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 294, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 35, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 196, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 124, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client.py:527: ResourceWarning: Unclosed client session <aiohttp.client.ClientSession object at 0x10d93dd40>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x10d93dd40>
+source_traceback: Object created at (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 44, in <module>
+    start(os.getcwd())
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 37, in start
+    runpy.run_path(entrypoint_path, run_name="__main__")
+  File "<frozen runpy>", line 294, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 35, in <module>
+    asyncio.run(main())
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 196, in run
+    return runner.run(main)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 2052, in _run_once
+    handle._run()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 30, in main
+    handler = AsyncSocketModeHandler(app, os.environ.get("SLACK_APP_TOKEN"))
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_bolt/adapter/socket_mode/aiohttp/__init__.py", line 82, in __init__
+    self.client = SocketModeClient(
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_sdk/socket_mode/aiohttp/__init__.py", line 130, in __init__
+    self.aiohttp_client_session = aiohttp.ClientSession(loop=loop)
+Exception ignored in: <function ClientResponse.__del__ at 0x10b3e7ad0>
+Traceback (most recent call last):
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client_reqrep.py", line 663, in __del__
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py", line 210, in release
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py", line 830, in _release
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client_proto.py", line 94, in close
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/sslproto.py", line 116, in close
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/sslproto.py", line 627, in _start_shutdown
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 799, in call_later
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 812, in call_at
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 556, in _check_closed
+RuntimeError: Event loop is closed
+/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py:156: ResourceWarning: Unclosed connection Connection<ConnectionKey(host='wss-primary.slack.com', port=443, is_ssl=True, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None, server_hostname=None)>
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/selector_events.py:876: ResourceWarning: unclosed transport <_SelectorSocketTransport fd=10>
+python-dotenv could not parse statement starting at line 1
+WARNING:slack_bolt.AsyncApp:As you gave `client` as well, `token` will be unused.
+DEBUG:asyncio:Using selector: KqueueSelector
+DEBUG:tzlocal:/etc/localtime found
+DEBUG:tzlocal:1 found:
+ {'/etc/localtime is a symlink to': 'America/Toronto'}
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Added job "send_reminders" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/apps.connections.open, params: {}, files: {}, data: {}, json: {}, proxy: {}, headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2026-11-23 09:00:00-05:00 (in 252276.378864 seconds)
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 2.665ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10d27f8c0> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10d27f8c0>: SSL handshake took 32.3 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=10, family=2, type=1, proto=6, laddr=('10.230.16.158', 63904), raddr=('18.221.229.81', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10d47d3a0>, <aiohttp.client_proto.ResponseHandler object at 0x10d43b0c0>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:55:23 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': 'b4a36365c6aae7279b06cffe4642efd9', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'x-robots-tag': 'noindex,nofollow', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-accepted-oauth-scopes': 'connections:write', 'x-oauth-scopes': 'connections:write', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': '4a3c9d63-73bb-4d31-a80f-a8be2f71dd02', 'Access-Control-Allow-Origin': '*', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-0019a900484f70a93,ingress-edge-cmh-prod-03248d2397def0883', 'Content-Encoding': 'gzip', 'Content-Length': '165', 'x-envoy-upstream-service-time': '19', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-cbtqeyt20153', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True, 'url': 'wss://wss-primary.slack.com/link/?ticket=2434436b-7800-42ff-9d63-0559b33cec4f&app_id=085073cc15bdacc5c7b468805b8d9f55f476f31a85ba613ffa3993185e5f976b'}
+DEBUG:asyncio:Get address info wss-primary.slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info wss-primary.slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 1.544ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.83.181.24', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.165.254.123', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('44.238.43.4', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('52.40.255.127', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('44.235.135.203', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('52.41.113.249', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('54.189.250.135', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.82.187.142', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10d27ef20> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10d27ef20>: SSL handshake took 117.2 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=10, family=2, type=1, proto=6, laddr=('10.230.16.158', 63905), raddr=('35.83.181.24', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10d42ef30>, <aiohttp.client_proto.ResponseHandler object at 0x10d448a80>)
+INFO:slack_bolt.AsyncApp:A new session (s_282230360) has been established
+DEBUG:slack_bolt.AsyncApp:Sending a ping message with the newly established connection (s_282230360)...
+DEBUG:slack_bolt.AsyncApp:A new monitor_current_session() executor has been recreated for s_282230360
+DEBUG:slack_bolt.AsyncApp:A new receive_messages() executor has been recreated for s_282230360
+INFO:slack_bolt.AsyncApp:⚡️ Bolt app is running!
+DEBUG:slack_bolt.AsyncApp:A new monitor_current_session() execution loop for s_282230360 started
+DEBUG:slack_bolt.AsyncApp:A new receive_messages() execution loop with s_282230360 started
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"type":"hello","num_connections":1,"debug_info":{"host":"applink-6","build_number":31,"approximate_connection_time":18060},"connection_info":{"app_id":"A0CKRURK42Y"}}', extra: , session: s_282230360)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_282230360)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: hello, envelope_id: None, session: s_282230360)
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: hello, envelope_id: None, session: s_282230360)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190124.2358541', extra: , session: s_282230360)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-6', extra: , session: s_282230360)
+App change detected: /Users/abbywang/Documents/Prototype/pulse-bot/agent/agent.py, restarting server...
+DEBUG:slack_bolt.AsyncApp:The running receive_messages task for s_282230360 is now cancelled
+DEBUG:slack_bolt.AsyncApp:The monitor_current_session task for s_282230360 is now cancelled
+DEBUG:asyncio:Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 31, in main
+    await handler.start_async()
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_bolt/adapter/socket_mode/async_base_handler.py", line 50, in start_async
+    await asyncio.sleep(float("inf"))
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/tasks.py", line 720, in sleep
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 44, in <module>
+    start(os.getcwd())
+    ~~~~~^^^^^^^^^^^^^
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 37, in start
+    runpy.run_path(entrypoint_path, run_name="__main__")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 294, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 35, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 196, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 124, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client.py:527: ResourceWarning: Unclosed client session <aiohttp.client.ClientSession object at 0x10d27dd40>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x10d27dd40>
+source_traceback: Object created at (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 44, in <module>
+    start(os.getcwd())
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 37, in start
+    runpy.run_path(entrypoint_path, run_name="__main__")
+  File "<frozen runpy>", line 294, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 35, in <module>
+    asyncio.run(main())
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 196, in run
+    return runner.run(main)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 2052, in _run_once
+    handle._run()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 30, in main
+    handler = AsyncSocketModeHandler(app, os.environ.get("SLACK_APP_TOKEN"))
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_bolt/adapter/socket_mode/aiohttp/__init__.py", line 82, in __init__
+    self.client = SocketModeClient(
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_sdk/socket_mode/aiohttp/__init__.py", line 130, in __init__
+    self.aiohttp_client_session = aiohttp.ClientSession(loop=loop)
+Exception ignored in: <function ClientResponse.__del__ at 0x10ad4bad0>
+Traceback (most recent call last):
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client_reqrep.py", line 663, in __del__
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py", line 210, in release
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py", line 830, in _release
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client_proto.py", line 94, in close
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/sslproto.py", line 116, in close
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/sslproto.py", line 627, in _start_shutdown
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 799, in call_later
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 812, in call_at
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 556, in _check_closed
+RuntimeError: Event loop is closed
+/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py:156: ResourceWarning: Unclosed connection Connection<ConnectionKey(host='wss-primary.slack.com', port=443, is_ssl=True, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None, server_hostname=None)>
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/selector_events.py:876: ResourceWarning: unclosed transport <_SelectorSocketTransport fd=10>
+python-dotenv could not parse statement starting at line 1
+WARNING:slack_bolt.AsyncApp:As you gave `client` as well, `token` will be unused.
+DEBUG:asyncio:Using selector: KqueueSelector
+DEBUG:tzlocal:/etc/localtime found
+DEBUG:tzlocal:1 found:
+ {'/etc/localtime is a symlink to': 'America/Toronto'}
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Added job "send_reminders" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/apps.connections.open, params: {}, files: {}, data: {}, json: {}, proxy: {}, headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2026-11-23 09:00:00-05:00 (in 252267.343806 seconds)
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 3.223ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x1095af8c0> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x1095af8c0>: SSL handshake took 36.9 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=10, family=2, type=1, proto=6, laddr=('10.230.16.158', 63911), raddr=('18.221.229.81', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x1097ad3a0>, <aiohttp.client_proto.ResponseHandler object at 0x10976ae80>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:55:32 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': '8bee065d4a85a60b2f0ccbadba4623f6', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'x-robots-tag': 'noindex,nofollow', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-accepted-oauth-scopes': 'connections:write', 'x-oauth-scopes': 'connections:write', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': '5fd1f68f-d0fd-4455-946a-d26c47c215bc', 'Access-Control-Allow-Origin': '*', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-0ff959305934fb244,ingress-edge-cmh-prod-028c7bb8002db9c70', 'Content-Encoding': 'gzip', 'Content-Length': '164', 'x-envoy-upstream-service-time': '18', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-b7s3ouvtzplj', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True, 'url': 'wss://wss-primary.slack.com/link/?ticket=ca6efc51-5090-478d-9343-7a9ea03bcacd&app_id=085073cc15bdacc5c7b468805b8d9f55f476f31a85ba613ffa3993185e5f976b'}
+DEBUG:asyncio:Get address info wss-primary.slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info wss-primary.slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 1.926ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('52.40.255.127', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.165.254.123', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('52.41.113.249', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('44.235.135.203', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('44.238.43.4', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.82.187.142', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.83.181.24', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('54.189.250.135', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x1095aef20> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x1095aef20>: SSL handshake took 96.2 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=10, family=2, type=1, proto=6, laddr=('10.230.16.158', 63912), raddr=('52.40.255.127', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10975ef30>, <aiohttp.client_proto.ResponseHandler object at 0x1096a62b0>)
+INFO:slack_bolt.AsyncApp:A new session (s_278244952) has been established
+DEBUG:slack_bolt.AsyncApp:Sending a ping message with the newly established connection (s_278244952)...
+DEBUG:slack_bolt.AsyncApp:A new monitor_current_session() executor has been recreated for s_278244952
+DEBUG:slack_bolt.AsyncApp:A new receive_messages() executor has been recreated for s_278244952
+INFO:slack_bolt.AsyncApp:⚡️ Bolt app is running!
+DEBUG:slack_bolt.AsyncApp:A new monitor_current_session() execution loop for s_278244952 started
+DEBUG:slack_bolt.AsyncApp:A new receive_messages() execution loop with s_278244952 started
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"type":"hello","num_connections":1,"debug_info":{"host":"applink-0","build_number":31,"approximate_connection_time":18060},"connection_info":{"app_id":"A0CKRURK42Y"}}', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: hello, envelope_id: None, session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: hello, envelope_id: None, session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190133.23615', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-0', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190143.238444', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-0', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190153.240274', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-0', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190163.241767', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"envelope_id":"c845b099-f25d-4b04-9a8c-afeab5f4271c","payload":{"token":"yzV0DgKAc6ypwx08S7CrXuPF","team_id":"T0CKL65CGGN","enterprise_id":"E0CK6PF7DGX","api_app_id":"A0CKRURK42Y","event":{"type":"app_home_opened","user":"U0CKFTU426P","channel":"D0CLGQN0MPA","tab":"messages","event_ts":"1795190166.461628"},"type":"event_callback","event_id":"Ev0CKQAFRZ33","event_time":1795190166,"authorizations":[{"enterprise_id":"E0CK6PF7DGX","team_id":null,"user_id":"U0CKL93B346","is_bot":true,"is_enterprise_install":true}],"is_ext_shared_channel":false},"type":"events_api","accepts_response_payload":false,"retry_attempt":0,"retry_reason":""}', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: events_api, envelope_id: c845b099-f25d-4b04-9a8c-afeab5f4271c, session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ssl_check.async_ssl_check.AsyncSslCheck
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.request_verification.async_request_verification.AsyncRequestVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.authorization.async_single_team_authorization.AsyncSingleTeamAuthorization
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/auth.test, params: {}, files: {}, data: {}, json: {}, proxy: {}, headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 2.044ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10978cb60> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10978cb60>: SSL handshake took 37.5 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=11, family=2, type=1, proto=6, laddr=('10.230.16.158', 63930), raddr=('3.134.44.134', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10988cf40>, <aiohttp.client_proto.ResponseHandler object at 0x1097c84e0>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:56:06 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': 'ad2345c9797f9f253015d5f04ad5ed54', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-oauth-scopes': 'app_mentions:read,channels:history,chat:write,groups:history,im:history,im:read,im:write,reactions:write,reactions:read,users:read,assistant:write,commands', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': '22629b8c-e192-4561-beef-fc7b07113d78', 'Access-Control-Allow-Origin': '*', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-03b97384ea1dec62c,ingress-edge-cmh-prod-06bb7650489e0c4a1', 'Content-Encoding': 'gzip', 'Content-Length': '183', 'x-envoy-upstream-service-time': '24', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-0z5aatwlokat', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True, 'url': 'https://sandbox-b67gx445.enterprise.slack.com/', 'team': 'talent-pulse', 'user': 'pulsebot_local', 'team_id': 'E0CK6PF7DGX', 'user_id': 'U0CKL93B346', 'bot_id': 'B0CKRURUE7N', 'enterprise_id': 'E0CK6PF7DGX', 'is_enterprise_install': True}
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ignoring_self_events.async_ignoring_self_events.AsyncIgnoringSelfEvents
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.url_verification.async_url_verification.AsyncUrlVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.attaching_function_token.async_attaching_function_token.AsyncAttachingFunctionToken
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_feedback_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_checkin_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_report_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_checkin_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_report_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_help_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_onboarding_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_trigger_reminder_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_app_home_opened ...
+DEBUG:slack_bolt.AsyncApp:Running listener: handle_app_home_opened ...
+DEBUG:slack_bolt.AsyncApp:Responding with status: 200 body: "" (0 millis)
+DEBUG:slack_bolt.AsyncApp:Sending a message: {"envelope_id": "c845b099-f25d-4b04-9a8c-afeab5f4271c"} from session: s_278244952
+DEBUG:slack_bolt.AsyncApp:Response time: 131 milliseconds
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: events_api, envelope_id: c845b099-f25d-4b04-9a8c-afeab5f4271c, session: s_278244952)
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/assistant.threads.setSuggestedPrompts, params: {}, files: {}, data: {}, json: {'channel_id': 'D0CLGQN0MPA', 'prompts': [{'title': 'Submit a check-in', 'message': 'How do I submit my weekly check-in?'}, {'title': 'Report something', 'message': 'How do I report something to HR?'}, {'title': 'Onboarding resources', 'message': 'What onboarding and mentorship resources are available?'}], 'title': "Hi, I'm Pulse Bot :wave: Try `/checkin`, `/report`, `/help`, or `/onboarding` any time."}, proxy: {}, headers: {'Content-Type': 'application/json;charset=utf-8', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 1.871ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10978cf80> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10978cf80>: SSL handshake took 32.9 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=11, family=2, type=1, proto=6, laddr=('10.230.16.158', 63931), raddr=('3.134.44.134', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x1098a8610>, <aiohttp.client_proto.ResponseHandler object at 0x1098916e0>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:56:06 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': '36b8b6109d875723d45ecb2c2cedc36f', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-accepted-oauth-scopes': 'assistant:write', 'x-oauth-scopes': 'app_mentions:read,channels:history,chat:write,groups:history,im:history,im:read,im:write,reactions:write,reactions:read,users:read,assistant:write,commands', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': '72a0b88f-ee79-4fdf-a6b5-4d787187d3c9', 'Access-Control-Allow-Origin': '*', 'Content-Length': '11', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-0725c44d0a40e4a38,ingress-edge-cmh-prod-04bfcb78ba007bcb4', 'x-envoy-upstream-service-time': '61', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-y6imnnstn3fe', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True}
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-0', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190173.243191', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-0', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190183.2445598', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190193.246058', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-0', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190203.2477062', extra: , session: s_278244952)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-0', extra: , session: s_278244952)
+App change detected: /Users/abbywang/Documents/Prototype/pulse-bot/listeners/events/app_home_opened.py, restarting server...
+DEBUG:slack_bolt.AsyncApp:The running receive_messages task for s_278244952 is now cancelled
+DEBUG:slack_bolt.AsyncApp:The monitor_current_session task for s_278244952 is now cancelled
+DEBUG:asyncio:Close <_UnixSelectorEventLoop running=False closed=False debug=True>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 31, in main
+    await handler.start_async()
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_bolt/adapter/socket_mode/async_base_handler.py", line 50, in start_async
+    await asyncio.sleep(float("inf"))
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/tasks.py", line 720, in sleep
+    return await future
+           ^^^^^^^^^^^^
+asyncio.exceptions.CancelledError
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 44, in <module>
+    start(os.getcwd())
+    ~~~~~^^^^^^^^^^^^^
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 37, in start
+    runpy.run_path(entrypoint_path, run_name="__main__")
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen runpy>", line 294, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 35, in <module>
+    asyncio.run(main())
+    ~~~~~~~~~~~^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 196, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 124, in run
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client.py:527: ResourceWarning: Unclosed client session <aiohttp.client.ClientSession object at 0x1095add40>
+ERROR:asyncio:Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x1095add40>
+source_traceback: Object created at (most recent call last):
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 44, in <module>
+    start(os.getcwd())
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_cli_hooks/hooks/start.py", line 37, in start
+    runpy.run_path(entrypoint_path, run_name="__main__")
+  File "<frozen runpy>", line 294, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 35, in <module>
+    asyncio.run(main())
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 196, in run
+    return runner.run(main)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 119, in run
+    return self._loop.run_until_complete(task)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 712, in run_until_complete
+    self.run_forever()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 683, in run_forever
+    self._run_once()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 2052, in _run_once
+    handle._run()
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/events.py", line 89, in _run
+    self._context.run(self._callback, *self._args)
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/app.py", line 30, in main
+    handler = AsyncSocketModeHandler(app, os.environ.get("SLACK_APP_TOKEN"))
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_bolt/adapter/socket_mode/aiohttp/__init__.py", line 82, in __init__
+    self.client = SocketModeClient(
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/slack_sdk/socket_mode/aiohttp/__init__.py", line 130, in __init__
+    self.aiohttp_client_session = aiohttp.ClientSession(loop=loop)
+Exception ignored in: <function ClientResponse.__del__ at 0x107057ad0>
+Traceback (most recent call last):
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client_reqrep.py", line 663, in __del__
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py", line 210, in release
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py", line 830, in _release
+  File "/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/client_proto.py", line 94, in close
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/sslproto.py", line 116, in close
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/sslproto.py", line 627, in _start_shutdown
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 799, in call_later
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 812, in call_at
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 556, in _check_closed
+RuntimeError: Event loop is closed
+/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/aiohttp/connector.py:156: ResourceWarning: Unclosed connection Connection<ConnectionKey(host='wss-primary.slack.com', port=443, is_ssl=True, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None, server_hostname=None)>
+/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/selector_events.py:876: ResourceWarning: unclosed transport <_SelectorSocketTransport fd=10>
+python-dotenv could not parse statement starting at line 1
+WARNING:slack_bolt.AsyncApp:As you gave `client` as well, `token` will be unused.
+DEBUG:asyncio:Using selector: KqueueSelector
+DEBUG:tzlocal:/etc/localtime found
+DEBUG:tzlocal:1 found:
+ {'/etc/localtime is a symlink to': 'America/Toronto'}
+INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO:apscheduler.scheduler:Added job "send_reminders" to job store "default"
+INFO:apscheduler.scheduler:Scheduler started
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/apps.connections.open, params: {}, files: {}, data: {}, json: {}, proxy: {}, headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:apscheduler.scheduler:Looking for jobs to run
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2026-11-23 09:00:00-05:00 (in 252188.931966 seconds)
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 4.446ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x109b3f8c0> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x109b3f8c0>: SSL handshake took 34.5 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=10, family=2, type=1, proto=6, laddr=('10.230.16.158', 63953), raddr=('3.130.95.182', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x109d25090>, <aiohttp.client_proto.ResponseHandler object at 0x109cfb0c0>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:56:51 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': '8ebe187211710481984cdb933530fbf3', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'x-robots-tag': 'noindex,nofollow', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-accepted-oauth-scopes': 'connections:write', 'x-oauth-scopes': 'connections:write', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': 'adef4807-9fdf-4de2-a389-27534cbb32f6', 'Access-Control-Allow-Origin': '*', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-0d1c74fabeb5a262d,ingress-edge-cmh-prod-0bb24c706f89a858a', 'Content-Encoding': 'gzip', 'Content-Length': '165', 'x-envoy-upstream-service-time': '26', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-gmdm6y9aouv2', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True, 'url': 'wss://wss-primary.slack.com/link/?ticket=5034fd90-dadb-4002-b217-08d6c9039f29&app_id=085073cc15bdacc5c7b468805b8d9f55f476f31a85ba613ffa3993185e5f976b'}
+DEBUG:asyncio:Get address info wss-primary.slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info wss-primary.slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 55.172ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.82.187.142', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('35.83.181.24', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('44.229.222.36', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('54.189.250.135', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('34.211.68.211', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('44.238.43.4', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('52.41.113.249', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('44.226.178.27', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x109b3ef20> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x109b3ef20>: SSL handshake took 92.8 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=10, family=2, type=1, proto=6, laddr=('10.230.16.158', 63954), raddr=('35.82.187.142', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x109ceee50>, <aiohttp.client_proto.ResponseHandler object at 0x109d08a80>)
+INFO:slack_bolt.AsyncApp:A new session (s_278609496) has been established
+DEBUG:slack_bolt.AsyncApp:Sending a ping message with the newly established connection (s_278609496)...
+DEBUG:slack_bolt.AsyncApp:A new monitor_current_session() executor has been recreated for s_278609496
+DEBUG:slack_bolt.AsyncApp:A new receive_messages() executor has been recreated for s_278609496
+INFO:slack_bolt.AsyncApp:⚡️ Bolt app is running!
+DEBUG:slack_bolt.AsyncApp:A new monitor_current_session() execution loop for s_278609496 started
+DEBUG:slack_bolt.AsyncApp:A new receive_messages() execution loop with s_278609496 started
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"type":"hello","num_connections":1,"debug_info":{"host":"applink-6","build_number":31,"approximate_connection_time":18060},"connection_info":{"app_id":"A0CKRURK42Y"}}', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: hello, envelope_id: None, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: hello, envelope_id: None, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190211.641654', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-6', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190221.6436841', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-6', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"envelope_id":"74c976c6-bc19-47b8-a93d-c7a426d3987b","payload":{"token":"yzV0DgKAc6ypwx08S7CrXuPF","team_id":"T0CKL65CGGN","enterprise_id":"E0CK6PF7DGX","api_app_id":"A0CKRURK42Y","event":{"type":"app_home_opened","user":"U0CKFTU426P","channel":"D0CLGQN0MPA","tab":"messages","event_ts":"1795190231.279791"},"type":"event_callback","event_id":"Ev0CKLF1GM3Q","event_time":1795190231,"authorizations":[{"enterprise_id":"E0CK6PF7DGX","team_id":null,"user_id":"U0CKL93B346","is_bot":true,"is_enterprise_install":true}],"is_ext_shared_channel":false},"type":"events_api","accepts_response_payload":false,"retry_attempt":0,"retry_reason":""}', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: events_api, envelope_id: 74c976c6-bc19-47b8-a93d-c7a426d3987b, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ssl_check.async_ssl_check.AsyncSslCheck
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.request_verification.async_request_verification.AsyncRequestVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.authorization.async_single_team_authorization.AsyncSingleTeamAuthorization
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/auth.test, params: {}, files: {}, data: {}, json: {}, proxy: {}, headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 1.996ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x109d2cb60> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x109d2cb60>: SSL handshake took 48.0 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=11, family=2, type=1, proto=6, laddr=('10.230.16.158', 63964), raddr=('3.130.95.182', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x109e1cfb0>, <aiohttp.client_proto.ResponseHandler object at 0x109d6bdb0>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:57:11 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': 'e7cd1e8d523f172929b015550d0ead49', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-oauth-scopes': 'app_mentions:read,channels:history,chat:write,groups:history,im:history,im:read,im:write,reactions:write,reactions:read,users:read,assistant:write,commands', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': '434338bc-7ed3-435b-b620-d333416037b8', 'Access-Control-Allow-Origin': '*', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-0d7c0d331f8569ccc,ingress-edge-cmh-prod-09b8b37f4b4077b00', 'Content-Encoding': 'gzip', 'Content-Length': '183', 'x-envoy-upstream-service-time': '28', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-l8tche2kgdlb', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True, 'url': 'https://sandbox-b67gx445.enterprise.slack.com/', 'team': 'talent-pulse', 'user': 'pulsebot_local', 'team_id': 'E0CK6PF7DGX', 'user_id': 'U0CKL93B346', 'bot_id': 'B0CKRURUE7N', 'enterprise_id': 'E0CK6PF7DGX', 'is_enterprise_install': True}
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ignoring_self_events.async_ignoring_self_events.AsyncIgnoringSelfEvents
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.url_verification.async_url_verification.AsyncUrlVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.attaching_function_token.async_attaching_function_token.AsyncAttachingFunctionToken
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_feedback_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_checkin_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_report_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_checkin_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_report_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_help_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_onboarding_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_trigger_reminder_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_app_home_opened ...
+DEBUG:slack_bolt.AsyncApp:Running listener: handle_app_home_opened ...
+DEBUG:slack_bolt.AsyncApp:Responding with status: 200 body: "" (1 millis)
+DEBUG:slack_bolt.AsyncApp:Sending a message: {"envelope_id": "74c976c6-bc19-47b8-a93d-c7a426d3987b"} from session: s_278609496
+DEBUG:slack_bolt.AsyncApp:Response time: 269 milliseconds
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: events_api, envelope_id: 74c976c6-bc19-47b8-a93d-c7a426d3987b, session: s_278609496)
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/assistant.threads.setSuggestedPrompts, params: {}, files: {}, data: {}, json: {'channel_id': 'D0CLGQN0MPA', 'prompts': [{'title': 'Submit a check-in', 'message': 'How do I submit my weekly check-in?'}, {'title': 'Report something', 'message': 'How do I report something to HR?'}, {'title': 'Onboarding resources', 'message': 'What onboarding and mentorship resources are available?'}], 'title': "Hi! I'm Pulse Bot :wave: I'm here to help you check in, get support, and find resources during your internship. Try `/checkin`, `/report`, `/help`, or `/onboarding` any time."}, proxy: {}, headers: {'Content-Type': 'application/json;charset=utf-8', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 2.763ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x109d2cf80> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x109d2cf80>: SSL handshake took 31.5 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=11, family=2, type=1, proto=6, laddr=('10.230.16.158', 63965), raddr=('3.130.95.182', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x109e30680>, <aiohttp.client_proto.ResponseHandler object at 0x109e216e0>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:57:11 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': 'e33677405aa50e629af350b7d5237db3', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-accepted-oauth-scopes': 'assistant:write', 'x-oauth-scopes': 'app_mentions:read,channels:history,chat:write,groups:history,im:history,im:read,im:write,reactions:write,reactions:read,users:read,assistant:write,commands', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': 'f5cbf126-f6fc-4fd0-9633-23ce38b9382c', 'Access-Control-Allow-Origin': '*', 'Content-Length': '11', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-032c40674a2acc341,ingress-edge-cmh-prod-0df454d02967e2f87', 'x-envoy-upstream-service-time': '52', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-gk2m63sseeet', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True}
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190231.6450539', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-6', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190241.64593', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"envelope_id":"d9b1a0d8-5194-4bde-b4d5-104a418384c6","payload":{"token":"yzV0DgKAc6ypwx08S7CrXuPF","team_id":"T0CKL65CGGN","enterprise_id":"E0CK6PF7DGX","context_team_id":null,"context_enterprise_id":"E0CK6PF7DGX","api_app_id":"A0CKRURK42Y","event":{"type":"message","user":"U0CKFTU426P","ts":"1795190245.204849","client_msg_id":"aa575df1-c693-4753-a219-903e2e2d3c94","text":"What onboarding and mentorship resources are available?","blocks":[{"type":"rich_text","block_id":"1\\/W25","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"What onboarding and mentorship resources are available?"}]}]}],"channel":"D0CLGQN0MPA","event_ts":"1795190245.204849","channel_type":"im"},"type":"event_callback","event_id":"Ev0CKH5KNBPX","event_time":1795190245,"authorizations":[{"enterprise_id":"E0CK6PF7DGX","team_id":null,"user_id":"U0CKL93B346","is_bot":true,"is_enterprise_install":true}],"is_ext_shared_channel":false,"event_context":"4-eyJldCI6Im1lc3NhZ2UiLCJ0aWQiOiJUMENLTDY1Q0dHTiIsImFpZCI6IkEwQ0tSVVJLNDJZIiwiY2lkIjoiRDBDTEdRTjBNUEEifQ"},"type":"events_api","accepts_response_payload":false,"retry_attempt":0,"retry_reason":""}', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: events_api, envelope_id: d9b1a0d8-5194-4bde-b4d5-104a418384c6, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ssl_check.async_ssl_check.AsyncSslCheck
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.request_verification.async_request_verification.AsyncRequestVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.authorization.async_single_team_authorization.AsyncSingleTeamAuthorization
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ignoring_self_events.async_ignoring_self_events.AsyncIgnoringSelfEvents
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.url_verification.async_url_verification.AsyncUrlVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.attaching_function_token.async_attaching_function_token.AsyncAttachingFunctionToken
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_feedback_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_checkin_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_report_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_checkin_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_report_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_help_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_onboarding_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_trigger_reminder_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_app_home_opened ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_app_mentioned ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_message ...
+DEBUG:slack_bolt.AsyncApp:Running listener: handle_message ...
+DEBUG:slack_bolt.AsyncApp:Responding with status: 200 body: "" (0 millis)
+DEBUG:slack_bolt.AsyncApp:Sending a message: {"envelope_id": "d9b1a0d8-5194-4bde-b4d5-104a418384c6"} from session: s_278609496
+DEBUG:slack_bolt.AsyncApp:Response time: 1 milliseconds
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: events_api, envelope_id: d9b1a0d8-5194-4bde-b4d5-104a418384c6, session: s_278609496)
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/assistant.threads.setStatus, params: {}, files: {}, data: {}, json: {'channel_id': 'D0CLGQN0MPA', 'thread_ts': '1795190245.204849', 'status': 'Thinking...', 'loading_messages': ['Teaching the hamsters to type faster…', 'Untangling the internet cables…', 'Consulting the office goldfish…', 'Polishing up the response just for you…', 'Convincing the AI to stop overthinking…']}, proxy: {}, headers: {'Content-Type': 'application/json;charset=utf-8', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 2.040ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x109d2d500> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x109d2d500>: SSL handshake took 44.6 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=11, family=2, type=1, proto=6, laddr=('10.230.16.158', 63972), raddr=('3.130.95.182', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x109e30e60>, <aiohttp.client_proto.ResponseHandler object at 0x109ce6b20>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:57:25 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': 'a2ed776ac539000501e369ff69c9f8ff', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-accepted-oauth-scopes': 'chat:write', 'x-oauth-scopes': 'app_mentions:read,channels:history,chat:write,groups:history,im:history,im:read,im:write,reactions:write,reactions:read,users:read,assistant:write,commands', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': 'dec0f756-b50b-4694-940b-ce7858e5e824', 'Access-Control-Allow-Origin': '*', 'Content-Length': '11', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-0d754666a7a043da7,ingress-edge-cmh-prod-070e3b60d402e8106', 'x-envoy-upstream-service-time': '43', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-s3rgfcdc6ij4', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True}
+INFO:claude_agent_sdk._internal.transport.subprocess_cli:Using bundled Claude Code CLI: /Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/claude_agent_sdk/_bundled/claude
+DEBUG:asyncio:execute program '/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/claude_agent_sdk/_bundled/claude' stdin=<pipe> stdout=<pipe>
+DEBUG:asyncio:process '/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/claude_agent_sdk/_bundled/claude' created: pid 53485
+DEBUG:asyncio:Write pipe 12 connected: (<_UnixWritePipeTransport fd=12 idle bufsize=0>, <WriteSubprocessPipeProto fd=0 pipe=<_UnixWritePipeTransport fd=12 idle bufsize=0>>)
+DEBUG:asyncio:Read pipe 13 connected: (<_UnixReadPipeTransport fd=13 polling>, <ReadSubprocessPipeProto fd=1 pipe=<_UnixReadPipeTransport fd=13 polling>>)
+INFO:asyncio:execute program '/Users/abbywang/Documents/Prototype/pulse-bot/.venv/lib/python3.13/site-packages/claude_agent_sdk/_bundled/claude': <_UnixSubprocessTransport pid=53485 running stdin=<_UnixWritePipeTransport fd=12 idle bufsize=0> stdout=<_UnixReadPipeTransport fd=13 polling>>
+⚠ claude.ai connectors are disabled because ANTHROPIC_API_KEY or another auth source is set and takes precedence over your claude.ai login · Unset it to load your organization's connectors
+DEBUG:mcp.server.runner:no handler for notification notifications/initialized
+INFO:asyncio:<_UnixReadPipeTransport fd=13 polling> was closed by peer
+DEBUG:asyncio:process 53485 exited with returncode 1
+INFO:asyncio:<_UnixSubprocessTransport pid=53485 running stdin=<_UnixWritePipeTransport closed fd=12 closed> stdout=<_UnixReadPipeTransport closed fd=13 closed>> exited with return code 1
+DEBUG:slack_sdk.web.async_base_client:ChatStream appended to buffer: {"buffer_length": 25, "buffer_size": 256, "channel": "D0CLGQN0MPA", "recipient_team_id": "E0CK6PF7DGX", "recipient_user_id": "U0CKFTU426P", "thread_ts": "1795190245.204849"}
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/chat.startStream, params: {}, files: {}, data: {}, json: {'channel': 'D0CLGQN0MPA', 'thread_ts': '1795190245.204849', 'recipient_team_id': 'E0CK6PF7DGX', 'recipient_user_id': 'U0CKFTU426P'}, proxy: {}, headers: {'Content-Type': 'application/json;charset=utf-8', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 1.858ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10aa89240> starts SSL handshake
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-6', extra: , session: s_278609496)
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10aa89240>: SSL handshake took 38.3 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=11, family=2, type=1, proto=6, laddr=('10.230.16.158', 63982), raddr=('3.130.95.182', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10ab9fcc0>, <aiohttp.client_proto.ResponseHandler object at 0x10aa8fd20>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:57:31 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': 'f8ffb9b731383c862b965afa1d2349e1', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-accepted-oauth-scopes': 'chat:write', 'x-oauth-scopes': 'app_mentions:read,channels:history,chat:write,groups:history,im:history,im:read,im:write,reactions:write,reactions:read,users:read,assistant:write,commands', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': '77864075-d4aa-43c5-bb97-7eeba70b82b1', 'Access-Control-Allow-Origin': '*', 'Content-Length': '60', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-06fe962c43097dd40,ingress-edge-cmh-prod-05752ff43357020e9', 'x-envoy-upstream-service-time': '142', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-4puckt5hnb6k', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True, 'channel': 'D0CLGQN0MPA', 'ts': '1795190251.266749'}
+DEBUG:slack_sdk.web.async_base_client:Sending a request - url: POST https://slack.com/api/chat.stopStream, params: {}, files: {}, data: {}, json: {'channel': 'D0CLGQN0MPA', 'ts': '1795190251.266749', 'blocks': [{'elements': [{'action_id': 'feedback', 'negative_button': {'text': {'emoji': True, 'text': 'Bad Response', 'type': 'plain_text'}, 'accessibility_label': 'Submit negative feedback on this response', 'value': 'bad-feedback'}, 'positive_button': {'text': {'emoji': True, 'text': 'Good Response', 'type': 'plain_text'}, 'accessibility_label': 'Submit positive feedback on this response', 'value': 'good-feedback'}, 'type': 'feedback_buttons'}], 'type': 'context_actions'}], 'chunks': [{'text': 'Credit balance is too low', 'type': 'markdown_text'}]}, proxy: {}, headers: {'Content-Type': 'application/json;charset=utf-8', 'Authorization': '(redacted)', 'User-Agent': 'Python/3.13.14 slackclient/3.47.0 Darwin/25.5.0'}
+DEBUG:asyncio:Get address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024>
+DEBUG:asyncio:Getting address info slack.com:443, type=<SocketKind.SOCK_STREAM: 1>, flags=<AddressInfo.AI_ADDRCONFIG: 1024> took 2.180ms: [(<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.130.95.182', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.216.36.190', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.53.1', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.134.44.134', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.129.123.235', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.22.139.176', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.142.111.40', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('18.221.229.81', 443)), (<AddressFamily.AF_INET: 2>, <SocketKind.SOCK_STREAM: 1>, 6, '', ('3.143.19.65', 443))]
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10aa88f80> starts SSL handshake
+DEBUG:asyncio:<asyncio.sslproto.SSLProtocol object at 0x10aa88f80>: SSL handshake took 38.5 ms
+DEBUG:asyncio:<asyncio.TransportSocket fd=11, family=2, type=1, proto=6, laddr=('10.230.16.158', 63983), raddr=('3.130.95.182', 443)> connected to None:None: (<asyncio.sslproto._SSLProtocolTransport object at 0x10ab6d1e0>, <aiohttp.client_proto.ResponseHandler object at 0x10aac92f0>)
+DEBUG:slack_sdk.web.async_base_client:Received the following response - status: 200, headers: {'Date': 'Fri, 20 Nov 2026 15:57:31 GMT', 'Server': 'Apache', 'Vary': 'Accept-Encoding', 'x-slack-req-id': 'aa3d6d55d03abc03a15fec95d98b68f1', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Pragma': 'no-cache', 'Cache-Control': 'private, no-cache, no-store, must-revalidate', 'Expires': 'Sat, 26 Jul 1997 05:00:00 GMT', 'Content-Type': 'application/json; charset=utf-8', 'x-accepted-oauth-scopes': 'chat:write', 'x-oauth-scopes': 'app_mentions:read,channels:history,chat:write,groups:history,im:history,im:read,im:write,reactions:write,reactions:read,users:read,assistant:write,commands', 'Access-Control-Expose-Headers': 'x-slack-req-id, retry-after', 'Access-Control-Allow-Headers': 'slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid, x-b3-sampled, x-b3-flags, x-background', 'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload', 'Referrer-Policy': 'no-referrer', 'x-slack-unique-id': '00fd1e99-7bbb-4c46-8121-6d723aa21441', 'Access-Control-Allow-Origin': '*', 'Via': '1.1 slack-prod.tinyspeck.com, ingress-www-iad-external-prod-017004c07d424f385,ingress-edge-cmh-prod-0f8f128e2f1af2faf', 'Content-Encoding': 'gzip', 'Content-Length': '595', 'x-envoy-upstream-service-time': '165', 'x-backend': 'api_normal', 'x-server': 'slack-www-hhvm-api-iad-1vd9d58o0xru', 'x-slack-shared-secret-outcome': 'no-match', 'x-edge-backend': 'envoy-www', 'Timing-Allow-Origin': '*', 'Alt-Svc': 'h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, quic=":443"; ma=2592000', 'x-slack-edge-shared-secret-outcome': 'no-match'}, body: {'ok': True, 'channel': 'D0CLGQN0MPA', 'ts': '1795190251.266749', 'message': {'user': 'U0CKL93B346', 'type': 'message', 'ts': '1795190251.266749', 'bot_id': 'B0CKRURUE7N', 'app_id': 'A0CKRURK42Y', 'text': 'Credit balance is too low, with interactive elements', 'team': 'T0CKL65CGGN', 'bot_profile': {'id': 'B0CKRURUE7N', 'deleted': False, 'name': 'pulse-bot (local)', 'updated': 1795189052, 'app_id': 'A0CKRURK42Y', 'user_id': 'U0CKL93B346', 'icons': {'image_36': 'https://a.slack-edge.com/80588/img/plugins/app/bot_36.png', 'image_48': 'https://a.slack-edge.com/80588/img/plugins/app/bot_48.png', 'image_72': 'https://a.slack-edge.com/80588/img/plugins/app/service_72.png'}, 'team_id': 'T0CKL65CGGN'}, 'thread_ts': '1795190245.204849', 'parent_user_id': 'U0CKFTU426P', 'blocks': [{'type': 'rich_text', 'block_id': 'X+aBUv', 'elements': [{'type': 'rich_text_section', 'elements': [{'type': 'text', 'text': 'Credit balance is too low'}]}]}, {'type': 'context_actions', 'block_id': 'mm6/h', 'elements': [{'type': 'feedback_buttons', 'action_id': 'feedback', 'positive_button': {'text': {'type': 'plain_text', 'text': 'Good Response', 'emoji': True}, 'accessibility_label': 'Submit positive feedback on this response', 'value': 'good-feedback'}, 'negative_button': {'text': {'type': 'plain_text', 'text': 'Bad Response', 'emoji': True}, 'accessibility_label': 'Submit negative feedback on this response', 'value': 'bad-feedback'}}]}], 'streaming_state': 'completed'}}
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"envelope_id":"ba5118c3-d612-440b-89fa-da6640237477","payload":{"token":"yzV0DgKAc6ypwx08S7CrXuPF","team_id":"T0CKL65CGGN","enterprise_id":"E0CK6PF7DGX","context_team_id":null,"context_enterprise_id":"E0CK6PF7DGX","api_app_id":"A0CKRURK42Y","event":{"type":"message","subtype":"message_changed","message":{"user":"U0CKFTU426P","type":"message","client_msg_id":"aa575df1-c693-4753-a219-903e2e2d3c94","text":"What onboarding and mentorship resources are available?","blocks":[{"type":"rich_text","block_id":"1\\/W25","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"What onboarding and mentorship resources are available?"}]}]}],"agent_session":{"status":"processing","agent_bot_user_ids":["U0CKL93B346"],"encoded_initiator_user_id":"U0CKFTU426P","date_status_processing_expire":1795193851,"agent_statuses":[{"agent_bot_user_id":"U0CKL93B346","status":"processing","date_status_processing_expire":1795193851,"is_stoppable":false}]},"ts":"1795190245.204849"},"previous_message":{"user":"U0CKFTU426P","type":"message","ts":"1795190245.204849","client_msg_id":"aa575df1-c693-4753-a219-903e2e2d3c94","text":"What onboarding and mentorship resources are available?","blocks":[{"type":"rich_text","block_id":"1\\/W25","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"What onboarding and mentorship resources are available?"}]}]}]},"channel":"D0CLGQN0MPA","hidden":true,"ts":"1795190251.000400","event_ts":"1795190251.000400","channel_type":"im"},"type":"event_callback","event_id":"Ev0CKH5LDQ93","event_time":1795190251,"authorizations":[{"enterprise_id":"E0CK6PF7DGX","team_id":null,"user_id":"U0CKL93B346","is_bot":true,"is_enterprise_install":true}],"is_ext_shared_channel":false,"event_context":"4-eyJldCI6Im1lc3NhZ2UiLCJ0aWQiOiJUMENLTDY1Q0dHTiIsImFpZCI6IkEwQ0tSVVJLNDJZIiwiY2lkIjoiRDBDTEdRTjBNUEEifQ"},"type":"events_api","accepts_response_payload":false,"retry_attempt":0,"retry_reason":""}', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: events_api, envelope_id: ba5118c3-d612-440b-89fa-da6640237477, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ssl_check.async_ssl_check.AsyncSslCheck
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.request_verification.async_request_verification.AsyncRequestVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.authorization.async_single_team_authorization.AsyncSingleTeamAuthorization
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ignoring_self_events.async_ignoring_self_events.AsyncIgnoringSelfEvents
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.url_verification.async_url_verification.AsyncUrlVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.attaching_function_token.async_attaching_function_token.AsyncAttachingFunctionToken
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_feedback_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_checkin_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_report_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_checkin_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_report_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_help_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_onboarding_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_trigger_reminder_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_app_home_opened ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_app_mentioned ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_message ...
+DEBUG:slack_bolt.AsyncApp:Running listener: handle_message ...
+DEBUG:slack_bolt.AsyncApp:Responding with status: 200 body: "" (0 millis)
+DEBUG:slack_bolt.AsyncApp:Sending a message: {"envelope_id": "ba5118c3-d612-440b-89fa-da6640237477"} from session: s_278609496
+DEBUG:slack_bolt.AsyncApp:Response time: 2 milliseconds
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: events_api, envelope_id: ba5118c3-d612-440b-89fa-da6640237477, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"envelope_id":"f9729746-4945-4e2c-b43e-c7691873e78f","payload":{"token":"yzV0DgKAc6ypwx08S7CrXuPF","team_id":"T0CKL65CGGN","enterprise_id":"E0CK6PF7DGX","context_team_id":null,"context_enterprise_id":"E0CK6PF7DGX","api_app_id":"A0CKRURK42Y","event":{"type":"message","user":"U0CKL93B346","ts":"1795190251.266749","bot_id":"B0CKRURUE7N","app_id":"A0CKRURK42Y","text":"","team":"T0CKL65CGGN","bot_profile":{"id":"B0CKRURUE7N","deleted":false,"name":"pulse-bot (local)","updated":1795189052,"app_id":"A0CKRURK42Y","user_id":"U0CKL93B346","icons":{"image_36":"https:\\/\\/a.slack-edge.com\\/80588\\/img\\/plugins\\/app\\/bot_36.png","image_48":"https:\\/\\/a.slack-edge.com\\/80588\\/img\\/plugins\\/app\\/bot_48.png","image_72":"https:\\/\\/a.slack-edge.com\\/80588\\/img\\/plugins\\/app\\/service_72.png"},"team_id":"T0CKL65CGGN"},"thread_ts":"1795190245.204849","parent_user_id":"U0CKFTU426P","streaming_state":"in_progress","channel":"D0CLGQN0MPA","event_ts":"1795190251.266749","channel_type":"im"},"type":"event_callback","event_id":"Ev0CKLF6M214","event_time":1795190251,"authorizations":[{"enterprise_id":"E0CK6PF7DGX","team_id":null,"user_id":"U0CKL93B346","is_bot":true,"is_enterprise_install":true}],"is_ext_shared_channel":false,"event_context":"4-eyJldCI6Im1lc3NhZ2UiLCJ0aWQiOiJUMENLTDY1Q0dHTiIsImFpZCI6IkEwQ0tSVVJLNDJZIiwiY2lkIjoiRDBDTEdRTjBNUEEifQ"},"type":"events_api","accepts_response_payload":false,"retry_attempt":0,"retry_reason":""}', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: events_api, envelope_id: f9729746-4945-4e2c-b43e-c7691873e78f, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ssl_check.async_ssl_check.AsyncSslCheck
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.request_verification.async_request_verification.AsyncRequestVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.authorization.async_single_team_authorization.AsyncSingleTeamAuthorization
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ignoring_self_events.async_ignoring_self_events.AsyncIgnoringSelfEvents
+DEBUG:slack_bolt.IgnoringSelfEvents:Skipped self event: {'type': 'message', 'user': 'U0CKL93B346', 'ts': '1795190251.266749', 'bot_id': 'B0CKRURUE7N', 'app_id': 'A0CKRURK42Y', 'text': '', 'team': 'T0CKL65CGGN', 'bot_profile': {'id': 'B0CKRURUE7N', 'deleted': False, 'name': 'pulse-bot (local)', 'updated': 1795189052, 'app_id': 'A0CKRURK42Y', 'user_id': 'U0CKL93B346', 'icons': {'image_36': 'https://a.slack-edge.com/80588/img/plugins/app/bot_36.png', 'image_48': 'https://a.slack-edge.com/80588/img/plugins/app/bot_48.png', 'image_72': 'https://a.slack-edge.com/80588/img/plugins/app/service_72.png'}, 'team_id': 'T0CKL65CGGN'}, 'thread_ts': '1795190245.204849', 'parent_user_id': 'U0CKFTU426P', 'streaming_state': 'in_progress', 'channel': 'D0CLGQN0MPA', 'event_ts': '1795190251.266749', 'channel_type': 'im'}
+DEBUG:slack_bolt.AsyncApp:Sending a message: {"envelope_id": "f9729746-4945-4e2c-b43e-c7691873e78f"} from session: s_278609496
+DEBUG:slack_bolt.AsyncApp:Response time: 0 milliseconds
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: events_api, envelope_id: f9729746-4945-4e2c-b43e-c7691873e78f, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"envelope_id":"6ca65af6-12c7-4d1f-ae2b-fa9cbd017070","payload":{"token":"yzV0DgKAc6ypwx08S7CrXuPF","team_id":"T0CKL65CGGN","enterprise_id":"E0CK6PF7DGX","context_team_id":null,"context_enterprise_id":"E0CK6PF7DGX","api_app_id":"A0CKRURK42Y","event":{"type":"message","subtype":"message_changed","message":{"user":"U0CKL93B346","type":"message","bot_id":"B0CKRURUE7N","app_id":"A0CKRURK42Y","text":"Credit balance is too low, with interactive elements","team":"T0CKL65CGGN","bot_profile":{"id":"B0CKRURUE7N","deleted":false,"name":"pulse-bot (local)","updated":1795189052,"app_id":"A0CKRURK42Y","user_id":"U0CKL93B346","icons":{"image_36":"https:\\/\\/a.slack-edge.com\\/80588\\/img\\/plugins\\/app\\/bot_36.png","image_48":"https:\\/\\/a.slack-edge.com\\/80588\\/img\\/plugins\\/app\\/bot_48.png","image_72":"https:\\/\\/a.slack-edge.com\\/80588\\/img\\/plugins\\/app\\/service_72.png"},"team_id":"T0CKL65CGGN"},"thread_ts":"1795190245.204849","parent_user_id":"U0CKFTU426P","blocks":[{"type":"rich_text","block_id":"X+aBUv","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"Credit balance is too low"}]}]},{"type":"context_actions","block_id":"mm6\\/h","elements":[{"type":"feedback_buttons","action_id":"feedback","positive_button":{"text":{"type":"plain_text","text":"Good Response","emoji":true},"accessibility_label":"Submit positive feedback on this response","value":"good-feedback"},"negative_button":{"text":{"type":"plain_text","text":"Bad Response","emoji":true},"accessibility_label":"Submit negative feedback on this response","value":"bad-feedback"}}]}],"streaming_state":"completed","ts":"1795190251.266749"},"previous_message":{"user":"U0CKL93B346","type":"message","ts":"1795190251.266749","bot_id":"B0CKRURUE7N","app_id":"A0CKRURK42Y","text":"","team":"T0CKL65CGGN","bot_profile":{"id":"B0CKRURUE7N","deleted":false,"name":"pulse-bot (local)","updated":1795189052,"app_id":"A0CKRURK42Y","user_id":"U0CKL93B346","icons":{"image_36":"https:\\/\\/a.slack-edge.com\\/80588\\/img\\/plugins\\/app\\/bot_36.png","image_48":"https:\\/\\/a.slack-edge.com\\/80588\\/img\\/plugins\\/app\\/bot_48.png","image_72":"https:\\/\\/a.slack-edge.com\\/80588\\/img\\/plugins\\/app\\/service_72.png"},"team_id":"T0CKL65CGGN"},"thread_ts":"1795190245.204849","parent_user_id":"U0CKFTU426P","streaming_state":"in_progress"},"channel":"D0CLGQN0MPA","hidden":true,"ts":"1795190251.000600","event_ts":"1795190251.000600","channel_type":"im"},"type":"event_callback","event_id":"Ev0CKG7F0B3M","event_time":1795190251,"authorizations":[{"enterprise_id":"E0CK6PF7DGX","team_id":null,"user_id":"U0CKL93B346","is_bot":true,"is_enterprise_install":true}],"is_ext_shared_channel":false,"event_context":"4-eyJldCI6Im1lc3NhZ2UiLCJ0aWQiOiJUMENLTDY1Q0dHTiIsImFpZCI6IkEwQ0tSVVJLNDJZIiwiY2lkIjoiRDBDTEdRTjBNUEEifQ"},"type":"events_api","accepts_response_payload":false,"retry_attempt":0,"retry_reason":""}', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: events_api, envelope_id: 6ca65af6-12c7-4d1f-ae2b-fa9cbd017070, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ssl_check.async_ssl_check.AsyncSslCheck
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.request_verification.async_request_verification.AsyncRequestVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.authorization.async_single_team_authorization.AsyncSingleTeamAuthorization
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ignoring_self_events.async_ignoring_self_events.AsyncIgnoringSelfEvents
+DEBUG:slack_bolt.IgnoringSelfEvents:Skipped self event: {'type': 'message', 'subtype': 'message_changed', 'message': {'user': 'U0CKL93B346', 'type': 'message', 'bot_id': 'B0CKRURUE7N', 'app_id': 'A0CKRURK42Y', 'text': 'Credit balance is too low, with interactive elements', 'team': 'T0CKL65CGGN', 'bot_profile': {'id': 'B0CKRURUE7N', 'deleted': False, 'name': 'pulse-bot (local)', 'updated': 1795189052, 'app_id': 'A0CKRURK42Y', 'user_id': 'U0CKL93B346', 'icons': {'image_36': 'https://a.slack-edge.com/80588/img/plugins/app/bot_36.png', 'image_48': 'https://a.slack-edge.com/80588/img/plugins/app/bot_48.png', 'image_72': 'https://a.slack-edge.com/80588/img/plugins/app/service_72.png'}, 'team_id': 'T0CKL65CGGN'}, 'thread_ts': '1795190245.204849', 'parent_user_id': 'U0CKFTU426P', 'blocks': [{'type': 'rich_text', 'block_id': 'X+aBUv', 'elements': [{'type': 'rich_text_section', 'elements': [{'type': 'text', 'text': 'Credit balance is too low'}]}]}, {'type': 'context_actions', 'block_id': 'mm6/h', 'elements': [{'type': 'feedback_buttons', 'action_id': 'feedback', 'positive_button': {'text': {'type': 'plain_text', 'text': 'Good Response', 'emoji': True}, 'accessibility_label': 'Submit positive feedback on this response', 'value': 'good-feedback'}, 'negative_button': {'text': {'type': 'plain_text', 'text': 'Bad Response', 'emoji': True}, 'accessibility_label': 'Submit negative feedback on this response', 'value': 'bad-feedback'}}]}], 'streaming_state': 'completed', 'ts': '1795190251.266749'}, 'previous_message': {'user': 'U0CKL93B346', 'type': 'message', 'ts': '1795190251.266749', 'bot_id': 'B0CKRURUE7N', 'app_id': 'A0CKRURK42Y', 'text': '', 'team': 'T0CKL65CGGN', 'bot_profile': {'id': 'B0CKRURUE7N', 'deleted': False, 'name': 'pulse-bot (local)', 'updated': 1795189052, 'app_id': 'A0CKRURK42Y', 'user_id': 'U0CKL93B346', 'icons': {'image_36': 'https://a.slack-edge.com/80588/img/plugins/app/bot_36.png', 'image_48': 'https://a.slack-edge.com/80588/img/plugins/app/bot_48.png', 'image_72': 'https://a.slack-edge.com/80588/img/plugins/app/service_72.png'}, 'team_id': 'T0CKL65CGGN'}, 'thread_ts': '1795190245.204849', 'parent_user_id': 'U0CKFTU426P', 'streaming_state': 'in_progress'}, 'channel': 'D0CLGQN0MPA', 'hidden': True, 'ts': '1795190251.000600', 'event_ts': '1795190251.000600', 'channel_type': 'im'}
+DEBUG:slack_bolt.AsyncApp:Sending a message: {"envelope_id": "6ca65af6-12c7-4d1f-ae2b-fa9cbd017070"} from session: s_278609496
+DEBUG:slack_bolt.AsyncApp:Response time: 0 milliseconds
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: events_api, envelope_id: 6ca65af6-12c7-4d1f-ae2b-fa9cbd017070, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: TEXT, data: '{"envelope_id":"aa24010d-c5c1-4dcb-9494-4e97f315d933","payload":{"token":"yzV0DgKAc6ypwx08S7CrXuPF","team_id":"T0CKL65CGGN","enterprise_id":"E0CK6PF7DGX","context_team_id":null,"context_enterprise_id":"E0CK6PF7DGX","api_app_id":"A0CKRURK42Y","event":{"type":"message","subtype":"message_changed","message":{"user":"U0CKFTU426P","type":"message","client_msg_id":"aa575df1-c693-4753-a219-903e2e2d3c94","text":"What onboarding and mentorship resources are available?","thread_ts":"1795190245.204849","reply_count":1,"reply_users_count":1,"latest_reply":"1795190251.266749","reply_users":["U0CKL93B346"],"is_locked":false,"blocks":[{"type":"rich_text","block_id":"1\\/W25","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"What onboarding and mentorship resources are available?"}]}]}],"agent_session":{"status":"active","agent_bot_user_ids":["U0CKL93B346"],"encoded_initiator_user_id":"U0CKFTU426P","agent_statuses":[{"agent_bot_user_id":"U0CKL93B346","status":"active","is_stoppable":false}]},"ts":"1795190245.204849"},"previous_message":{"user":"U0CKFTU426P","type":"message","ts":"1795190245.204849","client_msg_id":"aa575df1-c693-4753-a219-903e2e2d3c94","text":"What onboarding and mentorship resources are available?","thread_ts":"1795190245.204849","reply_count":1,"reply_users_count":1,"latest_reply":"1795190251.266749","reply_users":["U0CKL93B346"],"is_locked":false,"subscribed":false,"blocks":[{"type":"rich_text","block_id":"1\\/W25","elements":[{"type":"rich_text_section","elements":[{"type":"text","text":"What onboarding and mentorship resources are available?"}]}]}],"agent_session":{"status":"processing","agent_bot_user_ids":["U0CKL93B346"],"encoded_initiator_user_id":"U0CKFTU426P","date_status_processing_expire":1795193851,"agent_statuses":[{"agent_bot_user_id":"U0CKL93B346","status":"processing","date_status_processing_expire":1795193851,"is_stoppable":false}]}},"channel":"D0CLGQN0MPA","hidden":true,"ts":"1795190251.000700","event_ts":"1795190251.000700","channel_type":"im"},"type":"event_callback","event_id":"Ev0CKN8Q7VD0","event_time":1795190251,"authorizations":[{"enterprise_id":"E0CK6PF7DGX","team_id":null,"user_id":"U0CKL93B346","is_bot":true,"is_enterprise_install":true}],"is_ext_shared_channel":false,"event_context":"4-eyJldCI6Im1lc3NhZ2UiLCJ0aWQiOiJUMENLTDY1Q0dHTiIsImFpZCI6IkEwQ0tSVVJLNDJZIiwiY2lkIjoiRDBDTEdRTjBNUEEifQ"},"type":"events_api","accepts_response_payload":false,"retry_attempt":0,"retry_reason":""}', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:A new message enqueued (current queue size: 1, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Message processing started (type: events_api, envelope_id: aa24010d-c5c1-4dcb-9494-4e97f315d933, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ssl_check.async_ssl_check.AsyncSslCheck
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.request_verification.async_request_verification.AsyncRequestVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.authorization.async_single_team_authorization.AsyncSingleTeamAuthorization
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.ignoring_self_events.async_ignoring_self_events.AsyncIgnoringSelfEvents
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.url_verification.async_url_verification.AsyncUrlVerification
+DEBUG:slack_bolt.AsyncApp:Applying slack_bolt.middleware.attaching_function_token.async_attaching_function_token.AsyncAttachingFunctionToken
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_feedback_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_checkin_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_open_report_button ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_checkin_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_report_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_help_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_onboarding_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_trigger_reminder_command ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_app_home_opened ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_app_mentioned ...
+DEBUG:slack_bolt.AsyncApp:Checking listener: handle_message ...
+DEBUG:slack_bolt.AsyncApp:Running listener: handle_message ...
+DEBUG:slack_bolt.AsyncApp:Responding with status: 200 body: "" (0 millis)
+DEBUG:slack_bolt.AsyncApp:Sending a message: {"envelope_id": "aa24010d-c5c1-4dcb-9494-4e97f315d933"} from session: s_278609496
+DEBUG:slack_bolt.AsyncApp:Response time: 0 milliseconds
+DEBUG:slack_bolt.AsyncApp:Message processing completed (type: events_api, envelope_id: aa24010d-c5c1-4dcb-9494-4e97f315d933, session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190251.647556', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-6', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190261.649162', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-6', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190271.651021', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PING, data: 'Ping from applink-6', extra: , session: s_278609496)
+DEBUG:slack_bolt.AsyncApp:Received message (type: PONG, data: 'sdk-ping-pong:1795190281.652957', extra: , session: s_278609496)
