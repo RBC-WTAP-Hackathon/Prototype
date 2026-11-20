@@ -6,7 +6,14 @@ from slack_sdk.web.async_client import AsyncWebClient
 
 from dashboard_client import send_checkin
 from feedback import current_iso_week, feedback_store
-from listeners.support import build_support_blocks, feels_lost, stuck_context
+from listeners.support import (
+    build_mistreatment_blocks,
+    build_support_blocks,
+    feels_lost,
+    mistreated,
+    mistreatment_context,
+    stuck_context,
+)
 
 from .checkin_builder import ELABORATE_SUFFIX, QUESTIONS, SCALE_MAX, SECTIONS
 
@@ -67,7 +74,15 @@ async def handle_checkin_submission(
             text="Thanks for checking in! Your response has been recorded. :tada:",
         )
 
-        if feels_lost(ratings, [*reasons.values(), extra]):
+        texts = [*reasons.values(), extra]
+        if mistreated(texts):
+            await client.chat_postMessage(
+                channel=user_id,
+                text="I'm sorry you're dealing with that. Here are options to report it or get support.",
+                blocks=build_mistreatment_blocks(mistreatment_context(texts)),
+            )
+
+        if feels_lost(ratings, texts):
             await client.chat_postMessage(
                 channel=user_id,
                 text="Some resources and support that might help",

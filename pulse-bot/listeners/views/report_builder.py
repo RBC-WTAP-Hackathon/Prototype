@@ -17,7 +17,20 @@ URGENCY_OPTIONS = [
 ]
 
 
-def build_report_modal() -> dict:
+def build_report_modal(description: str | None = None) -> dict:
+    """Report form. `description` pre-fills "What's going on?" (e.g. from what they told the bot)."""
+    text_input = {
+        "type": "plain_text_input",
+        "action_id": "report_input",
+        "multiline": True,
+        "max_length": 3000,
+        "placeholder": {
+            "type": "plain_text",
+            "text": "Share as much detail as you're comfortable with",
+        },
+    }
+    if description:
+        text_input["initial_value"] = description[:3000]
     return {
         "type": "modal",
         "callback_id": "report_submission",
@@ -75,16 +88,7 @@ def build_report_modal() -> dict:
                 "type": "input",
                 "block_id": "report_text",
                 "label": {"type": "plain_text", "text": "What's going on?"},
-                "element": {
-                    "type": "plain_text_input",
-                    "action_id": "report_input",
-                    "multiline": True,
-                    "max_length": 3000,
-                    "placeholder": {
-                        "type": "plain_text",
-                        "text": "Share as much detail as you're comfortable with",
-                    },
-                },
+                "element": text_input,
             },
         ],
     }

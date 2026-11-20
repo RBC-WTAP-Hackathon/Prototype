@@ -8,6 +8,7 @@ from slack_sdk.web.async_client import AsyncWebClient
 
 from agent import AgentDeps, run_agent
 from listeners.chat_cleaner import CLEAR_PHRASES, clear_dm_and_confirm
+from listeners.support import build_mistreatment_blocks, mistreated, mistreatment_context
 from listeners.views.feedback_builder import build_feedback_blocks
 from thread_context import session_store
 
@@ -38,6 +39,15 @@ async def handle_message(
                 client, context.user_id, context.bot_user_id, context.bot_id, logger
             )
             return
+        # Someone was mean / unkind: offer report + support options before the agent replies
+        dm_text = event.get("text", "")
+        if mistreated([dm_text]):
+            await client.chat_postMessage(
+                channel=event["channel"],
+                thread_ts=event.get("thread_ts") or event["ts"],
+                text="I'm sorry you're dealing with that. Here are options to report it or get support.",
+                blocks=build_mistreatment_blocks(mistreatment_context([dm_text])),
+            )
     elif is_thread_reply:
         if f"<@{context.bot_user_id}>" in event.get("text", ""):
             return

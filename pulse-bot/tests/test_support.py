@@ -37,3 +37,29 @@ def test_intro_modal_can_be_prefilled():
     assert els["who"]["initial_value"] == TECH_WHO
     assert els["why"]["initial_value"] == "stuck"
     assert "initial_value" not in build_intro_modal()["blocks"][0]["element"]
+
+
+def test_unkind_language_offers_report_and_support():
+    from listeners.support import build_mistreatment_blocks, mistreated, mistreatment_context
+    from listeners.views.report_builder import build_report_modal
+
+    for said in [
+        "My team lead was really mean to me in standup",
+        "A senior dev talked down to me again",
+        "Someone yelled at me in front of everyone",
+        "He made an inappropriate comment about my accent",
+        "I felt belittled in the design review",
+    ]:
+        assert mistreated([said]), said
+    for fine in ["I mean, it was a good week", "Meaning to ask about return offers", "Shipped my feature!"]:
+        assert not mistreated([fine]), fine
+
+    ctx = mistreatment_context(["Great project", "My manager was rude to me"])
+    assert ctx == "My manager was rude to me"
+    blocks = build_mistreatment_blocks(ctx)
+    report_btn = next(b for b in blocks if b["type"] == "actions")["elements"][0]
+    assert report_btn["action_id"] == "support_report" and report_btn["value"] == ctx
+
+    view = build_report_modal(ctx)
+    text_el = next(b for b in view["blocks"] if b["block_id"] == "report_text")["element"]
+    assert text_el["initial_value"] == ctx

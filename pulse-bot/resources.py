@@ -24,6 +24,13 @@ RESOURCE_LINKS = [
     },
     {
         "section": "Supports",
+        "category": "Respect",
+        "title": "Respectful Workplace & Speak Up",
+        "description": "RBC's standards for respectful behaviour, and confidential ways to raise concerns.",
+        "url": "https://example.com/respectful-workplace",
+    },
+    {
+        "section": "Supports",
         "category": "Accessibility",
         "title": "Workplace Accommodations",
         "description": "Request adjustments to your schedule, tools or workspace.",

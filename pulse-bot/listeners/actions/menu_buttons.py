@@ -7,6 +7,7 @@ from slack_sdk.web.async_client import AsyncWebClient
 
 from listeners.chat_cleaner import clear_dm_and_confirm
 from listeners.support import TECH_WHO
+from listeners.views.report_builder import build_report_modal
 from listeners.views.menu_builder import (
     build_connect_modal,
     build_feedback_modal,
@@ -71,3 +72,10 @@ async def handle_support_connect_technical(ack: Ack, body: dict, client: AsyncWe
     context = body["actions"][0].get("value", "")
     why = "" if context == "-" else f"I've been feeling a bit lost: {context}"
     await _open(body, client, build_intro_modal(who=TECH_WHO, why=why), logger, "technical intro")
+
+
+async def handle_support_report(ack: Ack, body: dict, client: AsyncWebClient, logger: Logger):
+    """From a 'someone was unkind' support message: open the report form pre-filled with what they wrote."""
+    await ack()
+    context = body["actions"][0].get("value", "")
+    await _open(body, client, build_report_modal(None if context == "-" else context), logger, "report form")

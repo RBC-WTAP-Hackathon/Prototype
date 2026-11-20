@@ -80,3 +80,86 @@ def build_support_blocks(context: str) -> list[dict]:
             ],
         },
     ]
+
+
+# ---------------------------------------------------------------------------
+# Someone was mean / unkind: offer to report it, plus wellbeing support.
+# Matches phrases ("was mean to me", "talked down to") rather than bare words,
+# so "I mean…" doesn't trigger it.
+# ---------------------------------------------------------------------------
+
+UNKIND = re.compile(
+    r"\b(?:was|were|being|been|is|are|so|really|very|super|pretty)\s+"
+    r"(?:mean|rude|unkind|nasty|hostile|condescending|disrespectful|dismissive|aggressive)\b"
+    r"|\bmean to (?:me|us|her|him|them)\b"
+    r"|\b(?:rude|unkind|disrespect\w*|condescend\w*|belittl\w*|humiliat\w*|bull(?:y|ied|ying)|harass\w*|"
+    r"insult\w*|toxic|discriminat\w*|racis\w*|sexis\w*|homophob\w*|transphob\w*|picked on)\b"
+    r"|\b(?:yell(?:ed|ing)?|scream(?:ed|ing)?|snapped|shout(?:ed|ing)?|swore) at\b"
+    r"|\btalk(?:ed|s|ing)? down to\b|\bmade fun of\b|\bmock(?:ed|ing)\b"
+    r"|\bmade me (?:feel )?(?:uncomfortable|small|stupid|unwelcome)\b"
+    r"|\b(?:excluded|left) me out\b|\binappropriate (?:comment|joke|remark|behaviou?r)s?\b",
+    re.IGNORECASE,
+)
+
+RESPECT_LINKS = [l for l in RESOURCE_LINKS if l["category"] in ("Respect", "Wellbeing")]
+EAP_URL = next((l["url"] for l in RESOURCE_LINKS if l["category"] == "Wellbeing"), None)
+
+
+def mistreated(texts: list[str]) -> bool:
+    return any(UNKIND.search(t) for t in texts if t)
+
+
+def mistreatment_context(texts: list[str]) -> str:
+    """What they wrote about it — pre-fills the report form."""
+    return " ".join(t for t in texts if t and UNKIND.search(t))[:1900]
+
+
+def build_mistreatment_blocks(context: str) -> list[dict]:
+    links = "\n".join(f"• <{l['url']}|{l['title']}> — {l['description']}" for l in RESPECT_LINKS)
+    buttons = [
+        {
+            "type": "button",
+            "action_id": "support_report",
+            "style": "primary",
+            "text": {"type": "plain_text", "text": "🚩 Report it", "emoji": True},
+            "value": context or "-",
+        }
+    ]
+    if EAP_URL:
+        buttons.append(
+            {
+                "type": "button",
+                "action_id": "link_support_eap",
+                "text": {"type": "plain_text", "text": "💛 Talk to a counsellor", "emoji": True},
+                "url": EAP_URL,
+            }
+        )
+    return [
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": "I'm really sorry you're dealing with that. Nobody should be treated that way at work, "
+                "and you don't have to handle it on your own. 💛",
+            },
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": "*🚩 Report it*\nIf you'd like, you can tell HR what happened. You can stay anonymous, "
+                "and I've started the form with what you wrote so you can edit it.",
+            },
+        },
+        {"type": "section", "text": {"type": "mrkdwn", "text": f"*💛 Get support*\n{links}"}},
+        {"type": "actions", "block_id": "mistreatment_actions", "elements": buttons},
+        {
+            "type": "context",
+            "elements": [
+                {
+                    "type": "mrkdwn",
+                    "text": "If you ever feel unsafe, contact your manager or HR right away, or call 911 in an emergency.",
+                }
+            ],
+        },
+    ]

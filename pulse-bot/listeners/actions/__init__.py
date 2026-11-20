@@ -12,6 +12,7 @@ from .menu_buttons import (
     handle_open_intro,
     handle_open_resources,
     handle_support_connect_technical,
+    handle_support_report,
 )
 
 
@@ -25,4 +26,5 @@ def register(app: AsyncApp):
     app.action("open_intro_modal")(handle_open_intro)
     app.action("clear_chat")(handle_clear_chat)
     app.action("support_connect_technical")(handle_support_connect_technical)
+    app.action("support_report")(handle_support_report)
     app.action(re.compile(r"^link_"))(handle_link_button)
