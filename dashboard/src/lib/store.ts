@@ -1,7 +1,7 @@
 // Data access. Uses Supabase when SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY are set,
 // otherwise an in-memory store pre-loaded with the demo seed (resets on server restart).
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import type { Action, Checkin, PerformanceReview, Report, Snapshot, User } from "./types";
+import type { Action, Checkin, InboxItem, PerformanceReview, Report, Snapshot, User } from "./types";
 import { generateSeed } from "./seed-data";
 
 export interface Store {
@@ -15,6 +15,8 @@ export interface Store {
   insertReview(r: Omit<PerformanceReview, "id">): Promise<PerformanceReview>;
   insertAction(a: Omit<Action, "id">): Promise<Action>;
   updateReportStatus(id: string, status: Report["status"]): Promise<void>;
+  insertInboxItem(i: Omit<InboxItem, "id">): Promise<InboxItem>;
+  updateInboxStatus(id: string, status: InboxItem["status"]): Promise<void>;
 }
 
 const uid = () => crypto.randomUUID();
@@ -64,6 +66,15 @@ function memoryStore(): Store {
       const r = db.reports.find((x) => x.id === id);
       if (r) r.status = status;
     },
+    async insertInboxItem(i) {
+      const row = { ...i, id: uid() };
+      db.inbox.push(row);
+      return row;
+    },
+    async updateInboxStatus(id, status) {
+      const i = db.inbox.find((x) => x.id === id);
+      if (i) i.status = status;
+    },
   };
 }
 
@@ -77,12 +88,13 @@ function supabaseStore(client: SupabaseClient): Store {
   return {
     kind: "supabase",
     async snapshot() {
-      const [users, checkins, reviews, reports, actions] = await Promise.all([
+      const [users, checkins, reviews, reports, actions, inbox] = await Promise.all([
         client.from("users").select("*"),
         client.from("checkins").select("*"),
         client.from("performance_reviews").select("*"),
         client.from("reports").select("*"),
         client.from("actions").select("*"),
+        client.from("inbox").select("*"),
       ]);
       return {
         users: must(users),
@@ -90,6 +102,7 @@ function supabaseStore(client: SupabaseClient): Store {
         reviews: must(reviews),
         reports: must(reports),
         actions: must(actions),
+        inbox: must(inbox),
       };
     },
     async findUserBySlackId(slackId) {
@@ -105,6 +118,10 @@ function supabaseStore(client: SupabaseClient): Store {
     insertAction: (a) => insert<Action>("actions", a),
     async updateReportStatus(id, status) {
       must(await client.from("reports").update({ status }).eq("id", id).select());
+    },
+    insertInboxItem: (i) => insert<InboxItem>("inbox", i),
+    async updateInboxStatus(id, status) {
+      must(await client.from("inbox").update({ status }).eq("id", id).select());
     },
   };
 }

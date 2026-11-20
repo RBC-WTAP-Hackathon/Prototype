@@ -59,6 +59,19 @@ create table if not exists reports (
   constraint anonymous_has_no_user check (not anonymous or user_id is null)
 );
 
+-- "Give other feedback" and "Request an intro" from the Slack bot menu.
+create table if not exists inbox (
+  id          text primary key default gen_random_uuid()::text,
+  kind        text not null check (kind in ('feedback','intro')),
+  user_id     text references users(id) on delete set null, -- null when anonymous
+  anonymous   boolean not null default false,
+  topic       text not null,
+  text        text not null default '',
+  status      text not null default 'New' check (status in ('New','Done')),
+  created_at  timestamptz default now(),
+  constraint inbox_anonymous_has_no_user check (not anonymous or user_id is null)
+);
+
 -- HR follow-ups (nudges, 1:1s) so the dashboard shows action, not just observation.
 create table if not exists actions (
   id          text primary key default gen_random_uuid()::text,

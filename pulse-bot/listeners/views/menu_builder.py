@@ -7,31 +7,50 @@ import hashlib
 
 from resources import CONNECT_LINKS, RESOURCE_LINKS, RESOURCE_SECTIONS
 
-# (action_id, emoji + label, description, primary?)
+# (action_id, emoji + label, description, button text, primary?)
 MENU_OPTIONS = [
-    ("open_checkin_modal", ":bar_chart:  Complete weekly check-in",
-     "Two minutes on your role, RBC, growth, voice and participation.", True),
-    ("open_report_modal", ":triangular_flag_on_post:  Report something",
-     "Raise an issue with HR. You can stay anonymous.", False),
-    ("open_feedback_modal", ":speech_balloon:  Give other feedback",
-     "Ideas or comments about the internship program or this bot.", False),
-    ("open_resources", ":books:  Resources",
-     "Supports, opportunities and learning modules.", False),
-    ("open_connect", ":handshake:  Connect with people at RBC",
-     "Mentors, ERGs, your intern cohort, or ask for an intro.", False),
+    ("open_checkin_modal", "📊  Complete weekly check-in",
+     "Two minutes on your role, RBC, growth, voice and participation.", "📊 Check in", True),
+    ("open_report_modal", "🚩  Report something",
+     "Raise an issue with HR. You can stay anonymous.", "🚩 Report", False),
+    ("open_feedback_modal", "💬  Give other feedback",
+     "Ideas or comments about the internship program or this bot.", "💬 Give feedback", False),
+    ("open_resources", "📚  Resources",
+     "Supports, opportunities and learning modules.", "📚 Browse", False),
+    ("open_connect", "🤝  Connect with people at RBC",
+     "Mentors, ERGs, your intern cohort, or ask for an intro.", "🤝 Connect", False),
+    ("clear_chat", "🧹  Clear chat",
+     "Delete my messages in our DM and reset our conversation.", "🧹 Clear", False),
 ]
+
+# Destructive options ask for confirmation before running.
+CONFIRM = {
+    "clear_chat": {
+        "title": {"type": "plain_text", "text": "Clear chat?"},
+        "text": {
+            "type": "mrkdwn",
+            "text": "This deletes every message I've sent you in our DM and resets our conversation. "
+            "It can't be undone. Slack doesn't let bots delete *your* messages, so those will stay.",
+        },
+        "confirm": {"type": "plain_text", "text": "Clear chat"},
+        "deny": {"type": "plain_text", "text": "Cancel"},
+        "style": "danger",
+    }
+}
 
 
 def build_menu_blocks() -> list[dict]:
     blocks: list[dict] = []
-    for action_id, label, description, primary in MENU_OPTIONS:
+    for action_id, label, description, button_text, primary in MENU_OPTIONS:
         button = {
             "type": "button",
             "action_id": action_id,
-            "text": {"type": "plain_text", "text": "Open", "emoji": True},
+            "text": {"type": "plain_text", "text": button_text, "emoji": True},
         }
         if primary:
             button["style"] = "primary"
+        if action_id in CONFIRM:
+            button["confirm"] = CONFIRM[action_id]
         blocks.append(
             {
                 "type": "section",
@@ -114,6 +133,13 @@ def build_connect_modal() -> dict:
 
 
 FEEDBACK_TOPICS = ["Internship program", "Events & socials", "This bot", "An idea or suggestion", "Something else"]
+FEEDBACK_EMOJI = {
+    "Internship program": "🎓",
+    "Events & socials": "🎉",
+    "This bot": "🤖",
+    "An idea or suggestion": "💡",
+    "Something else": "💭",
+}
 
 
 def build_feedback_modal() -> dict:
@@ -133,7 +159,8 @@ def build_feedback_modal() -> dict:
                     "action_id": "topic_select",
                     "placeholder": {"type": "plain_text", "text": "Pick one"},
                     "options": [
-                        {"text": {"type": "plain_text", "text": t}, "value": t} for t in FEEDBACK_TOPICS
+                        {"text": {"type": "plain_text", "text": f"{FEEDBACK_EMOJI[t]}  {t}", "emoji": True}, "value": t}
+                        for t in FEEDBACK_TOPICS
                     ],
                 },
             },

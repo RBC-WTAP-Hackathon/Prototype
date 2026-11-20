@@ -1,6 +1,7 @@
 import { analyzeCheckin } from "./llm";
 import { getStore } from "./store";
 import { CHECKIN_SCALE_MAX, SELF_DIMENSIONS, TOPICS } from "./dimensions";
+import { ROSTER } from "./roster";
 import type { SelfDimension, User } from "./types";
 
 const COHORT = "Summer 2026 Interns";
@@ -22,13 +23,14 @@ export async function resolveSlackUser(body: SlackProfile): Promise<User | null>
   const store = getStore();
   const existing = await store.findUserBySlackId(body.slack_id);
   if (existing || !body.name?.trim()) return existing;
+  const known = ROSTER[body.slack_id] ?? {};
   return store.insertUser({
     slack_id: body.slack_id,
     name: body.name.trim().slice(0, 120),
-    role: body.role?.trim() || "Intern",
-    department: body.department?.trim() || "Unassigned",
+    role: known.role ?? (body.role?.trim() || "Intern"),
+    department: known.department ?? (body.department?.trim() || "Unassigned"),
     cohort: COHORT,
-    manager_name: "",
+    manager_name: known.manager_name ?? "",
   });
 }
 
@@ -64,7 +66,8 @@ export async function ingestCheckin(body: CheckinBody) {
     number
   >;
   const currentWeek = Math.max(1, ...snap.checkins.map((c) => c.week_number));
-  const feedback_text = (body.feedback_text ?? "").slice(0, 2000);
+  // Up to 10 per-question explanations (≤400 chars each) plus a free-text note
+  const feedback_text = (body.feedback_text ?? "").slice(0, 6000);
   const analysis = await analyzeCheckin({ feedback_text, ...ratings });
   const topic = body.topic?.trim();
   if (topic && (TOPICS as readonly string[]).includes(topic) && !analysis.tags.includes(topic)) analysis.tags = [topic, ...analysis.tags];

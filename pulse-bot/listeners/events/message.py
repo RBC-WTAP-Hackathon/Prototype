@@ -7,6 +7,7 @@ from slack_bolt.context.set_status.async_set_status import AsyncSetStatus
 from slack_sdk.web.async_client import AsyncWebClient
 
 from agent import AgentDeps, run_agent
+from listeners.chat_cleaner import CLEAR_PHRASES, clear_dm_and_confirm
 from listeners.views.feedback_builder import build_feedback_blocks
 from thread_context import session_store
 
@@ -31,7 +32,12 @@ async def handle_message(
     is_thread_reply = event.get("thread_ts") is not None
 
     if is_dm:
-        pass
+        # "clear chat" in the DM wipes the bot's messages instead of going to the agent
+        if event.get("text", "").strip().lower() in CLEAR_PHRASES:
+            await clear_dm_and_confirm(
+                client, context.user_id, context.bot_user_id, context.bot_id, logger
+            )
+            return
     elif is_thread_reply:
         if f"<@{context.bot_user_id}>" in event.get("text", ""):
             return

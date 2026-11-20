@@ -113,3 +113,21 @@ async def send_report(
         payload["slack_id"] = user_id
         payload.update(await slack_profile(client, user_id, logger))
     return await _post("/api/reports", payload, logger)
+
+
+async def send_inbox_item(
+    client: AsyncWebClient,
+    user_id: str,
+    kind: str,
+    topic: str,
+    text: str,
+    is_anonymous: bool,
+    logger: Logger,
+) -> bool:
+    """Feedback ("feedback") or an intro request ("intro") from the bot menu."""
+    payload = {"kind": kind, "anonymous": is_anonymous, "topic": topic, "text": text}
+    # Anonymous feedback never carries the sender's identity.
+    if not is_anonymous:
+        payload["slack_id"] = user_id
+        payload.update(await slack_profile(client, user_id, logger))
+    return await _post("/api/inbox", payload, logger)

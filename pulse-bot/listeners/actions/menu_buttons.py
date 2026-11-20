@@ -1,8 +1,11 @@
+import asyncio
 from logging import Logger
 
 from slack_bolt import Ack
+from slack_bolt.context.async_context import AsyncBoltContext
 from slack_sdk.web.async_client import AsyncWebClient
 
+from listeners.chat_cleaner import clear_dm_and_confirm
 from listeners.views.menu_builder import (
     build_connect_modal,
     build_feedback_modal,
@@ -44,3 +47,18 @@ async def handle_open_intro(ack: Ack, body: dict, client: AsyncWebClient, logger
 async def handle_link_button(ack: Ack):
     """URL buttons open in the browser; Slack still sends an action we must acknowledge."""
     await ack()
+
+
+async def handle_clear_chat(
+    ack: Ack, body: dict, client: AsyncWebClient, context: AsyncBoltContext, logger: Logger
+):
+    await ack()
+    # Deleting many messages can take a while (rate limits); don't block the button.
+    task = asyncio.create_task(
+        clear_dm_and_confirm(client, body["user"]["id"], context.bot_user_id, context.bot_id, logger)
+    )
+    _background.add(task)  # keep a reference so the task isn't garbage-collected mid-run
+    task.add_done_callback(_background.discard)
+
+
+_background: set[asyncio.Task] = set()

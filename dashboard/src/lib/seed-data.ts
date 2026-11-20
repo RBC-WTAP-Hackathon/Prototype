@@ -1,7 +1,7 @@
 // Deterministic demo dataset: 24 fictional interns × 8 weeks.
 // Replace with an import of real participation/feedback data when available (see scripts/seed.ts).
 import { PREFER_NOT } from "./inclusion";
-import type {
+import type { InboxItem,
   Checkin,
   DimensionKey,
   PerformanceReview,
@@ -261,5 +261,23 @@ export function generateSeed(): Snapshot {
     },
   ];
 
-  return { users, checkins, reviews, reports, actions: [] };
+  const inbox: InboxItem[] = [
+    {
+      id: "i1", kind: "feedback", user_id: null, anonymous: true, topic: "Events & socials", status: "New",
+      text: "Could some intern socials be at lunch instead of after work? Hard to make evening events with a long commute.",
+      created_at: new Date(COHORT_START + 50 * 86400000).toISOString(),
+    },
+    {
+      id: "i2", kind: "intro", user_id: "u03", anonymous: false, topic: "Someone on the AI research team", status: "New",
+      text: "Interested in how RBC uses ML for fraud detection, and whether there are return roles in that area.",
+      created_at: new Date(COHORT_START + 48 * 86400000).toISOString(),
+    },
+    {
+      id: "i3", kind: "feedback", user_id: "u11", anonymous: false, topic: "Internship program", status: "Done",
+      text: "The week-one onboarding sessions were really helpful, especially the tools walkthrough.",
+      created_at: new Date(COHORT_START + 12 * 86400000).toISOString(),
+    },
+  ];
+
+  return { users, checkins, reviews, reports, actions: [], inbox };
 }

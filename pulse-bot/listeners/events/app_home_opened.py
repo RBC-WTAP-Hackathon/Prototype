@@ -8,10 +8,11 @@ from slack_sdk.web.async_client import AsyncWebClient
 from listeners.views.app_home_builder import build_app_home_view
 
 SUGGESTED_PROMPTS = [
-    {"title": "Complete weekly check-in", "message": "How do I complete my weekly check-in?"},
-    {"title": "Report something", "message": "How do I report something to HR?"},
-    {"title": "Resources", "message": "What supports, opportunities and learning modules are available?"},
-    {"title": "Connect with people at RBC", "message": "How can I meet mentors and other people at RBC?"},
+    # Slack allows at most 4 suggested prompts; emojis match the main menu.
+    {"title": "📊 Complete weekly check-in", "message": "How do I complete my weekly check-in?"},
+    {"title": "🚩 Report something", "message": "How do I report something to HR?"},
+    {"title": "📚 Resources", "message": "What supports, opportunities and learning modules are available?"},
+    {"title": "🤝 Connect with people at RBC", "message": "How can I meet mentors and other people at RBC?"},
 ]
 
 

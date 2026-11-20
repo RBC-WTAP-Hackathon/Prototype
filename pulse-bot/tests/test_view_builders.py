@@ -55,7 +55,7 @@ def test_build_app_home_view_connected():
     assert "connected" in mcp_section
 
 
-def test_main_menu_has_the_five_options():
+def test_main_menu_has_the_six_options():
     from listeners.views.menu_builder import build_menu_blocks
 
     action_ids = [b["accessory"]["action_id"] for b in build_menu_blocks()]
@@ -65,6 +65,7 @@ def test_main_menu_has_the_five_options():
         "open_feedback_modal",
         "open_resources",
         "open_connect",
+        "clear_chat",
     ]
 
 

@@ -76,6 +76,20 @@ export interface Report {
   created_at: string;
 }
 
+/** "Give other feedback" and "Request an intro" submissions from the Slack bot menu. */
+export interface InboxItem {
+  id: string;
+  kind: "feedback" | "intro";
+  user_id: string | null; // null when feedback was sent anonymously
+  anonymous: boolean;
+  /** Feedback: what it's about. Intro: who they'd like to meet. */
+  topic: string;
+  /** Feedback: the message. Intro: what they'd like to talk about (may be empty). */
+  text: string;
+  status: "New" | "Done";
+  created_at: string;
+}
+
 export interface Action {
   id: string;
   user_id: string;
@@ -90,6 +104,7 @@ export interface Snapshot {
   reviews: PerformanceReview[];
   reports: Report[];
   actions: Action[];
+  inbox: InboxItem[];
 }
 
 // ---------- View models returned by /api/dashboard ----------
@@ -187,6 +202,8 @@ export interface DashboardData {
   alerts: StatusAlert[];
   inclusion: InclusionData;
   reports: Report[];
+  /** Newest first, open items before done ones; `from` is the sender's name (null if anonymous). */
+  inbox: (InboxItem & { from: string | null })[];
   source: "supabase" | "memory";
   llm: string;
 }

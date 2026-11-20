@@ -7,10 +7,22 @@ from slack_sdk.web.async_client import AsyncWebClient
 from dashboard_client import send_checkin
 from feedback import current_iso_week, feedback_store
 
-from .checkin_builder import QUESTIONS, SCALE_MAX, SECTIONS
+from .checkin_builder import ELABORATE_SUFFIX, QUESTIONS, SCALE_MAX, SECTIONS
 
 # Any radar section averaging at or below this (out of 10) alerts HR.
 LOW_PULSE_THRESHOLD = 4
+
+
+def combine_notes(reasons: dict[str, str], extra: str) -> str:
+    """One readable block for the dashboard, e.g. 'Role: …\\nVoice: …\\nOther: …'.
+
+    Each line is labelled with its radar section so HR (and the dashboard's AI summary)
+    can tell which rating it explains.
+    """
+    lines = [f"{q.section}: {reasons[q.id]}" for q in QUESTIONS if reasons.get(q.id)]
+    if extra:
+        lines.append(f"Other: {extra}")
+    return "\n".join(lines)
 
 
 def section_scores(answers: dict[str, int]) -> dict[str, int]:
@@ -38,9 +50,14 @@ async def handle_checkin_submission(
             for q in QUESTIONS
         }
         ratings = section_scores(answers)
-        notes = values["notes"]["notes_input"].get("value") or ""
+        reasons = {
+            q.id: (values.get(f"{q.id}{ELABORATE_SUFFIX}", {}).get("why_input", {}).get("value") or "").strip()
+            for q in QUESTIONS
+        }
+        extra = (values["notes"]["notes_input"].get("value") or "").strip()
+        notes = combine_notes(reasons, extra)
 
-        # Overall pulse = average of the four sections (kept for reminders + HR alerts)
+        # Overall pulse = average of the sections (kept for reminders + HR alerts)
         rating = round(sum(ratings.values()) / len(ratings))
         feedback_store.record_checkin(user_id, current_iso_week(), rating, "", notes)
 
@@ -52,7 +69,7 @@ async def handle_checkin_submission(
         await send_checkin(client, user_id, ratings, None, notes, logger)
 
         if min(ratings.values()) <= LOW_PULSE_THRESHOLD:
-            await alert_hr(client, user_id, ratings, answers, notes, logger)
+            await alert_hr(client, user_id, ratings, answers, reasons, extra, logger)
     except Exception:
         logger.exception("Failed to handle check-in submission")
 
@@ -62,7 +79,8 @@ async def alert_hr(
     user_id: str,
     ratings: dict[str, int],
     answers: dict[str, int],
-    notes: str,
+    reasons: dict[str, str],
+    extra: str,
     logger: Logger,
 ):
     hr_channel_id = os.environ.get("HR_ALERT_CHANNEL_ID")
@@ -72,11 +90,14 @@ async def alert_hr(
 
     scores = " · ".join(f"{SECTIONS[k]} {v}/{SCALE_MAX}" for k, v in ratings.items())
     lowest = sorted(QUESTIONS, key=lambda q: answers[q.id])[:3]
-    low_lines = "\n".join(f"• {q.text} *{answers[q.id]}/{SCALE_MAX}*" for q in lowest)
+    low_lines = "\n".join(
+        f"• {q.text} *{answers[q.id]}/{SCALE_MAX}*" + (f"\n    _“{reasons[q.id]}”_" if reasons.get(q.id) else "")
+        for q in lowest
+    )
     text = (
         f":rotating_light: *Low pulse check-in* from <@{user_id}>\n"
         f"*Sections:* {scores}\n"
         f"*Lowest answers:*\n{low_lines}\n"
-        f"*Notes:* {notes or '_none provided_'}"
+        f"*Other notes:* {extra or '_none provided_'}"
     )
     await client.chat_postMessage(channel=hr_channel_id, text=text)

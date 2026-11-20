@@ -5,6 +5,7 @@ from slack_bolt.async_app import AsyncApp
 from .feedback_buttons import handle_feedback_button
 from .home_buttons import handle_open_checkin_button, handle_open_report_button
 from .menu_buttons import (
+    handle_clear_chat,
     handle_link_button,
     handle_open_connect,
     handle_open_feedback,
@@ -21,4 +22,5 @@ def register(app: AsyncApp):
     app.action("open_resources")(handle_open_resources)
     app.action("open_connect")(handle_open_connect)
     app.action("open_intro_modal")(handle_open_intro)
+    app.action("clear_chat")(handle_clear_chat)
     app.action(re.compile(r"^link_"))(handle_link_button)

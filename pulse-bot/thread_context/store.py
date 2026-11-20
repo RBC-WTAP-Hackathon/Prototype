@@ -43,6 +43,14 @@ class SessionStore:
             }
             self._cleanup()
 
+    def clear_channel(self, channel_id: str) -> int:
+        """Forget every conversation in a channel (e.g. after a user clears their DM)."""
+        with self._lock:
+            keys = [k for k in self._store if k[0] == channel_id]
+            for k in keys:
+                del self._store[k]
+            return len(keys)
+
     def _cleanup(self) -> None:
         """Remove expired entries and enforce max entry limit."""
         now = time.time()

@@ -1,13 +1,19 @@
 # Values match the HR dashboard's report categories and urgency levels exactly.
+# (emoji, value) — the value is what the dashboard receives, so it stays emoji-free.
 CATEGORY_OPTIONS = [
-    {"text": {"type": "plain_text", "text": value}, "value": value}
-    for value in ["Harassment", "Workload", "Team Conflict", "Other"]
+    {"text": {"type": "plain_text", "text": f"{emoji}  {value}", "emoji": True}, "value": value}
+    for emoji, value in [
+        ("🚫", "Harassment"),
+        ("⏰", "Workload"),
+        ("💬", "Team Conflict"),
+        ("📝", "Other"),
+    ]
 ]
 
 URGENCY_OPTIONS = [
-    {"text": {"type": "plain_text", "text": "Low - whenever HR can"}, "value": "Low"},
-    {"text": {"type": "plain_text", "text": "Medium - this week"}, "value": "Medium"},
-    {"text": {"type": "plain_text", "text": "High - needs attention now"}, "value": "High"},
+    {"text": {"type": "plain_text", "text": "🟢  Low - whenever HR can", "emoji": True}, "value": "Low"},
+    {"text": {"type": "plain_text", "text": "🟡  Medium - this week", "emoji": True}, "value": "Medium"},
+    {"text": {"type": "plain_text", "text": "🔴  High - needs attention now", "emoji": True}, "value": "High"},
 ]
 
 

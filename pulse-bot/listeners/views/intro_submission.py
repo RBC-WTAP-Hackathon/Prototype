@@ -3,6 +3,8 @@ from logging import Logger
 from slack_bolt import Ack
 from slack_sdk.web.async_client import AsyncWebClient
 
+from dashboard_client import send_inbox_item
+
 from .hr_channel import post_to_hr
 
 
@@ -13,8 +15,10 @@ async def handle_intro_submission(ack: Ack, body: dict, client: AsyncWebClient, 
         user_id = body["user"]["id"]
         values = body["view"]["state"]["values"]
         who = values["who"]["who_input"]["value"]
-        why = values["why"]["why_input"].get("value") or "_not specified_"
+        why_raw = values["why"]["why_input"].get("value") or ""
+        why = why_raw or "_not specified_"
 
+        await send_inbox_item(client, user_id, "intro", who, why_raw, False, logger)
         await post_to_hr(
             client,
             f":handshake: *Intro request* from <@{user_id}>\n*Would like to meet:* {who}\n*To talk about:* {why}",

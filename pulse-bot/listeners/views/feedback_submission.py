@@ -3,6 +3,8 @@ from logging import Logger
 from slack_bolt import Ack
 from slack_sdk.web.async_client import AsyncWebClient
 
+from dashboard_client import send_inbox_item
+
 from .hr_channel import post_to_hr
 
 
@@ -14,6 +16,8 @@ async def handle_feedback_submission(ack: Ack, body: dict, client: AsyncWebClien
         topic = values["topic"]["topic_select"]["selected_option"]["value"]
         text = values["feedback_text"]["feedback_input"]["value"]
         anonymous = bool(values["anonymous"]["anonymous_checkbox"]["selected_options"])
+
+        await send_inbox_item(client, user_id, "feedback", topic, text, anonymous, logger)
 
         sender = "An anonymous intern" if anonymous else f"<@{user_id}>"
         await post_to_hr(

@@ -276,6 +276,12 @@ export function buildDashboard(
     interns,
     alerts,
     inclusion: buildInclusion(interns, snap.users, snap.reports),
+    inbox: [...(snap.inbox ?? [])]
+      .sort(
+        (a, b) =>
+          Number(a.status === "Done") - Number(b.status === "Done") || b.created_at.localeCompare(a.created_at),
+      )
+      .map((i) => ({ ...i, from: i.user_id ? snap.users.find((u) => u.id === i.user_id)?.name ?? null : null })),
     reports: [...snap.reports].sort(
       (a, b) =>
         Number(a.status === "Reviewed") - Number(b.status === "Reviewed") ||

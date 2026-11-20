@@ -12,6 +12,7 @@ import { ProfileDrawer } from "@/components/profile-drawer";
 import { SimulateDialog } from "@/components/simulate-dialog";
 import { NotificationBell } from "@/components/notification-bell";
 import { InclusionInsights } from "@/components/inclusion-insights";
+import { InboxList } from "@/components/inbox-list";
 
 const POLL_MS = 3000;
 
@@ -78,6 +79,7 @@ export default function Home() {
             <a href="#inclusion" className="hover:text-accent">Inclusion</a>
             <a href="#intern-list" className="hover:text-accent">Intern list</a>
             <a href="#reports" className="hover:text-accent">Reports</a>
+            <a href="#inbox" className="hover:text-accent">Feedback</a>
           </nav>
           <div className="flex items-center gap-4">
             <span className="hidden items-center gap-1.5 font-ui text-xs text-muted sm:flex">
@@ -196,20 +198,35 @@ export default function Home() {
           >
             <InternTable interns={interns} onOpen={setOpenId} flashIds={flashIds} />
           </Card>
-          <Card id="reports" title="Reports" subtitle="From Slack /report">
-            <ReportsList
-              reports={data.reports}
-              interns={data.interns}
-              onReview={async (id) => {
-                await fetch("/api/reports", {
-                  method: "PATCH",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ id, status: "Reviewed" }),
-                });
-                load();
-              }}
-            />
-          </Card>
+          <div className="space-y-4">
+            <Card id="reports" title="Reports" subtitle="From Slack /report">
+              <ReportsList
+                reports={data.reports}
+                interns={data.interns}
+                onReview={async (id) => {
+                  await fetch("/api/reports", {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id, status: "Reviewed" }),
+                  });
+                  load();
+                }}
+              />
+            </Card>
+            <Card id="inbox" title="Feedback & intro requests" subtitle="From the Slack bot menu">
+              <InboxList
+                items={data.inbox}
+                onDone={async (id) => {
+                  await fetch("/api/inbox", {
+                    method: "PATCH",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ id, status: "Done" }),
+                  });
+                  load();
+                }}
+              />
+            </Card>
+          </div>
         </div>
 
 

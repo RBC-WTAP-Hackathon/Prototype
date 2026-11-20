@@ -171,7 +171,9 @@ export function ProfileDrawer({
                     </span>
                     <span>{c.tags.join(", ")}</span>
                   </div>
-                  <p className="mt-1 text-sm text-ink">{c.feedback_text || <em className="text-muted">No comment</em>}</p>
+                  <p className="mt-1 whitespace-pre-line text-sm text-ink">
+                    {c.feedback_text || <em className="text-muted">No comment</em>}
+                  </p>
                   <p className="mt-0.5 text-xs text-muted">
                     Role {c.role_satisfaction} · RBC {c.rbc_satisfaction} · Growth {c.learning_growth} · Voice{" "}
                     {c.voice_valued}

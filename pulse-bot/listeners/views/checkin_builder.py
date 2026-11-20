@@ -1,10 +1,10 @@
 """Weekly check-in modal.
 
-Ten questions, two for each self-reported section of the HR dashboard's
-experience radar (Role, RBC, Growth, Voice, Participation in RBC events). On submit,
-each section's answers are averaged into the single 1–10 score the dashboard API
-expects for that section. Performance is also on the radar but comes from manager
-ratings, so it is not asked here.
+Five questions, one for each self-reported section of the HR dashboard's
+experience radar (Role, RBC, Growth, Voice, Participation in RBC events), each with
+a short "please elaborate" text box. A section with several questions would be
+averaged into the single 1–10 score the dashboard API expects. Performance is also
+on the radar but comes from manager ratings, so it is not asked here.
 
 Slack modals have no slider element, so each rating is a dropdown whose options
 are drawn as a filling bar to read like a sliding scale.
@@ -35,52 +35,40 @@ SECTIONS = {
 }
 
 QUESTIONS = [
-    # Role
     Question("role_enjoy", "role_satisfaction", "Role",
              "How satisfied are you with your role and the work you're doing?",
              "not what I expected", "love my work"),
-    Question("role_clarity", "role_satisfaction", "Role",
-             "How clear are your responsibilities and what's expected of you?",
-             "no idea", "crystal clear"),
-    # RBC
     Question("rbc_place", "rbc_satisfaction", "RBC",
              "How do you feel about RBC as a place to work?",
              "wouldn't come back", "would happily return"),
-    Question("rbc_recommend", "rbc_satisfaction", "RBC",
-             "How likely are you to recommend an RBC internship to a friend?",
-             "not at all", "definitely"),
-    # Growth
     Question("growth_learning", "learning_growth", "Growth",
              "How much are you learning and building new skills?",
              "not learning anything", "growing every day"),
-    Question("growth_support", "learning_growth", "Growth",
-             "How supported do you feel by your manager or mentor?",
-             "on my own", "fully supported"),
-    # Voice
     Question("voice_heard", "voice_valued", "Voice",
              "How heard and valued are your ideas and opinions?",
              "never listened to", "always heard"),
-    Question("voice_speak_up", "voice_valued", "Voice",
-             "How comfortable do you feel speaking up or raising concerns?",
-             "not comfortable", "completely comfortable"),
-    # Participation in RBC events
     Question("participation_events", "participation", "Participation",
              "How involved were you in RBC events this week (socials, ERGs, info sessions, volunteering)?",
              "didn't join any", "joined everything I could"),
-    Question("participation_connected", "participation", "Participation",
-             "How connected do you feel to the intern community and the wider RBC network?",
-             "on the outside", "really connected"),
 ]
 
 
+# Mood face for each pair of scale points (1–2 … 9–10).
+SCALE_FACES = ["😞", "🙁", "😐", "🙂", "😄"]
+
+
+def scale_face(value: int) -> str:
+    return SCALE_FACES[min(len(SCALE_FACES) - 1, (value - 1) * len(SCALE_FACES) // SCALE_MAX)]
+
+
 def scale_label(value: int) -> str:
-    """e.g. 7 -> '▰▰▰▰▰▰▰▱▱▱   7 / 10'."""
-    return f"{'▰' * value}{'▱' * (SCALE_MAX - value)}   {value} / {SCALE_MAX}"
+    """e.g. 7 -> '🙂  ▰▰▰▰▰▰▰▱▱▱   7 / 10'."""
+    return f"{scale_face(value)}  {'▰' * value}{'▱' * (SCALE_MAX - value)}   {value} / {SCALE_MAX}"
 
 
 def _scale_options() -> list[dict]:
     return [
-        {"text": {"type": "plain_text", "text": scale_label(v)}, "value": str(v)}
+        {"text": {"type": "plain_text", "text": scale_label(v), "emoji": True}, "value": str(v)}
         for v in range(1, SCALE_MAX + 1)
     ]
 
@@ -100,6 +88,26 @@ def _rating_block(number: int, q: Question) -> dict:
     }
 
 
+ELABORATE_SUFFIX = "_why"
+
+
+def _elaborate_block(q: Question) -> dict:
+    """Optional short explanation under each rating (block_id = question id + '_why')."""
+    return {
+        "type": "input",
+        "block_id": f"{q.id}{ELABORATE_SUFFIX}",
+        "optional": True,
+        "label": {"type": "plain_text", "text": "Please elaborate in 1–2 sentences"},
+        "element": {
+            "type": "plain_text_input",
+            "action_id": "why_input",
+            "multiline": True,
+            "max_length": 400,
+            "placeholder": {"type": "plain_text", "text": "What's behind this rating?"},
+        },
+    }
+
+
 def _section_header(section: str) -> dict:
     return {"type": "header", "text": {"type": "plain_text", "text": section}}
 
@@ -111,8 +119,8 @@ def build_checkin_modal() -> dict:
             "elements": [
                 {
                     "type": "mrkdwn",
-                    "text": "10 quick ratings on your *role*, *RBC*, your *growth*, your *voice* "
-                    "and your *participation in RBC events*. "
+                    "text": "5 quick ratings on your *role*, *RBC*, your *growth*, your *voice* "
+                    "and your *participation in RBC events*, each with a line or two on why. "
                     "Takes about two minutes.",
                 }
             ],
@@ -124,17 +132,15 @@ def build_checkin_modal() -> dict:
             blocks.append(_section_header(q.section))
             current = q.section
         blocks.append(_rating_block(number, q))
+        blocks.append(_elaborate_block(q))
 
+    blocks.append({"type": "divider"})
     blocks.append(
         {
             "type": "input",
             "block_id": "notes",
             "optional": True,
-            "label": {"type": "plain_text", "text": "What's behind your ratings?"},
-            "hint": {
-                "type": "plain_text",
-                "text": "e.g. what's going well, or what would make your role, growth or voice better",
-            },
+            "label": {"type": "plain_text", "text": "Anything else you'd like to share?"},
             "element": {
                 "type": "plain_text_input",
                 "action_id": "notes_input",
