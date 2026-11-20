@@ -1,10 +1,14 @@
 import type { DimensionKey, SelfDimension } from "./types";
 
+/** Self-reported check-in ratings run 1–CHECKIN_SCALE_MAX. (Manager performance ratings stay 1–5.) */
+export const CHECKIN_SCALE_MAX = 10;
+
 export const SELF_DIMENSIONS: SelfDimension[] = [
   "role_satisfaction",
   "rbc_satisfaction",
   "learning_growth",
   "voice_valued",
+  "participation",
 ];
 
 /** Radar axis order (clockwise from top). */
@@ -46,10 +50,10 @@ export const DIMENSION_META: Record<
     suggestion: "Invite them to present an idea at the next team sync.",
   },
   participation: {
-    label: "Participation",
+    label: "Participation in RBC events",
     short: "Participation",
-    source: "Check-in rate & streak",
-    suggestion: "Send a friendly Slack nudge — missed check-ins are often the first sign of drift.",
+    source: "Self-reported weekly",
+    suggestion: "Invite them to an upcoming intern social, ERG or info session — and ask what would make events easier to join.",
   },
   performance: {
     label: "Performance",

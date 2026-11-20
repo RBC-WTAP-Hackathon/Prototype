@@ -11,6 +11,7 @@ import { ReportsList } from "@/components/reports-list";
 import { ProfileDrawer } from "@/components/profile-drawer";
 import { SimulateDialog } from "@/components/simulate-dialog";
 import { NotificationBell } from "@/components/notification-bell";
+import { InclusionInsights } from "@/components/inclusion-insights";
 
 const POLL_MS = 3000;
 
@@ -74,6 +75,7 @@ export default function Home() {
           <span className="text-lg font-medium text-rbc-navy">TalentPulse</span>
           <nav className="hidden items-center gap-8 text-base text-ink md:flex" aria-label="Sections">
             <a href="#overview" className="hover:text-accent">Overview</a>
+            <a href="#inclusion" className="hover:text-accent">Inclusion</a>
             <a href="#intern-list" className="hover:text-accent">Intern list</a>
             <a href="#reports" className="hover:text-accent">Reports</a>
           </nav>
@@ -164,6 +166,14 @@ export default function Home() {
             <TopicBars data={data.topics} />
           </Card>
         </div>
+
+        <Card
+          id="inclusion"
+          title="Inclusion & risk by group"
+          subtitle="Departments and self-identified groups that feel excluded or are showing issues over time"
+        >
+          <InclusionInsights data={data.inclusion} demo={data.source === "memory"} />
+        </Card>
 
         <div className="grid items-start gap-4 lg:grid-cols-3">
           <Card

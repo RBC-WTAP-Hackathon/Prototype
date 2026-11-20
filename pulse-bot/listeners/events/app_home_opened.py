@@ -8,12 +8,10 @@ from slack_sdk.web.async_client import AsyncWebClient
 from listeners.views.app_home_builder import build_app_home_view
 
 SUGGESTED_PROMPTS = [
-    {"title": "Submit a check-in", "message": "How do I submit my weekly check-in?"},
+    {"title": "Complete weekly check-in", "message": "How do I complete my weekly check-in?"},
     {"title": "Report something", "message": "How do I report something to HR?"},
-    {
-        "title": "Onboarding resources",
-        "message": "What onboarding and mentorship resources are available?",
-    },
+    {"title": "Resources", "message": "What supports, opportunities and learning modules are available?"},
+    {"title": "Connect with people at RBC", "message": "How can I meet mentors and other people at RBC?"},
 ]
 
 
@@ -32,9 +30,9 @@ async def handle_app_home_opened(
             await client.assistant_threads_setSuggestedPrompts(
                 channel_id=event["channel"],
                 title=(
-                    "Hi! I'm Pulse Bot :wave: I'm here to help you check in, get "
-                    "support, and find resources during your internship. Try "
-                    "`/checkin`, `/report`, `/help`, or `/onboarding` any time."
+                    "Hi! I'm TalentPulse :wave: Check in, report something, give feedback, "
+                    "find resources, or connect with people at RBC. Run `/help` for the menu "
+                    "any time, or open my Home tab."
                 ),
                 prompts=SUGGESTED_PROMPTS,
             )

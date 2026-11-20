@@ -1,14 +1,15 @@
 // Shared types for the HR dashboard. Mirrors supabase/schema.sql.
 
-/** Radar dimensions. The first four are self-reported in the weekly Slack check-in (1–5). */
+/** Radar dimensions. The first four are self-reported in the weekly Slack check-in (1–10). */
 export type SelfDimension =
   | "role_satisfaction"
   | "rbc_satisfaction"
   | "learning_growth"
-  | "voice_valued";
+  | "voice_valued"
+  | "participation"; // taking part in RBC events (socials, ERGs, info sessions, volunteering)
 
-/** Participation is computed from check-in behaviour; performance comes from the manager. */
-export type DimensionKey = SelfDimension | "participation" | "performance";
+/** Performance comes from the manager; everything else is self-reported in the check-in. */
+export type DimensionKey = SelfDimension | "performance";
 
 export type RiskLevel = "Low" | "Watch" | "High";
 export type SentimentLabel = "Positive" | "Neutral" | "At-Risk";
@@ -23,7 +24,16 @@ export interface User {
   department: string;
   cohort: string;
   manager_name: string;
+  /**
+   * Optional self-identification from Slack /self-id. Server-side only: used for
+   * aggregate inclusion insights, never sent to the browser or shown per person.
+   */
+  gender?: string | null;
+  ethnicity?: string | null;
 }
+
+/** User as sent to the browser — demographic self-ID stripped. */
+export type PublicUser = Omit<User, "gender" | "ethnicity">;
 
 export interface Checkin {
   id: string;
@@ -33,6 +43,8 @@ export interface Checkin {
   rbc_satisfaction: number;
   learning_growth: number;
   voice_valued: number;
+  /** Self-reported participation in RBC events, 1–10. May be null on rows from before it was asked. */
+  participation: number;
   feedback_text: string;
   sentiment_score: number; // -1..1
   sentiment_label: SentimentLabel;
@@ -85,7 +97,7 @@ export interface Snapshot {
 export type Scores = Record<DimensionKey, number>; // 0..100
 
 export interface InternView {
-  user: User;
+  user: PublicUser;
   radar: Scores;
   radarPrev: Scores | null; // three weeks earlier
   risk: { score: number; level: RiskLevel; reasons: string[] };
@@ -116,6 +128,45 @@ export interface StatusAlert {
   reasons: string[];
 }
 
+export type GroupingKey = "department" | "gender" | "ethnicity";
+
+/** Aggregate stats for one group (e.g. one department). Only produced for groups ≥ the minimum size. */
+export interface GroupStat {
+  name: string;
+  n: number;
+  scores: Scores; // mean radar now
+  change: Scores | null; // mean change vs 3 weeks ago (points, 0–100 scale)
+  atRiskPct: number; // % at Watch or High
+  avgRisk: number;
+  namedReports: number; // non-anonymous reports from this group (anonymous ones can't be attributed)
+}
+
+export interface Grouping {
+  key: GroupingKey;
+  label: string;
+  groups: GroupStat[];
+  /** People not shown: in groups under the minimum size, or who preferred not to say / didn't self-identify. */
+  hidden: number;
+}
+
+export interface InclusionInsight {
+  grouping: GroupingKey;
+  group: string;
+  n: number;
+  kind: "gap" | "decline" | "risk";
+  dimension: DimensionKey | null;
+  /** Points vs rest of cohort (gap), points over 3 weeks (decline), or % at risk (risk). */
+  value: number;
+  text: string;
+}
+
+export interface InclusionData {
+  minGroupSize: number;
+  selfIdPct: number; // % of interns who shared gender or ethnicity
+  groupings: Grouping[];
+  insights: InclusionInsight[];
+}
+
 export interface DashboardData {
   currentWeek: number;
   kpis: {
@@ -134,6 +185,7 @@ export interface DashboardData {
   heatmap: { department: string; n: number; scores: Scores | null }[];
   interns: InternView[];
   alerts: StatusAlert[];
+  inclusion: InclusionData;
   reports: Report[];
   source: "supabase" | "memory";
   llm: string;

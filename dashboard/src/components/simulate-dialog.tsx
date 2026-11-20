@@ -1,13 +1,13 @@
 "use client";
 import { useState } from "react";
 import { X } from "lucide-react";
-import { SELF_DIMENSIONS, DIMENSION_META } from "@/lib/dimensions";
+import { CHECKIN_SCALE_MAX, SELF_DIMENSIONS, DIMENSION_META } from "@/lib/dimensions";
 import type { InternView, SelfDimension } from "@/lib/types";
 import { Button } from "./ui";
 
 const PRESET = {
   text: "Honestly a rough week. Worked late every night and my idea in the team meeting got brushed off again. Another bank's recruiter reached out and I'm tempted.",
-  ratings: { role_satisfaction: 2, rbc_satisfaction: 2, learning_growth: 3, voice_valued: 1 } as Record<SelfDimension, number>,
+  ratings: { role_satisfaction: 3, rbc_satisfaction: 3, learning_growth: 5, voice_valued: 2, participation: 2 } as Record<SelfDimension, number>,
 };
 
 /** Demo backup for the Slack /checkin modal — posts through the exact same pipeline. */
@@ -63,25 +63,30 @@ export function SimulateDialog({
             ))}
           </select>
         </label>
-        <div className="mt-3 space-y-2">
+        <div className="mt-4 space-y-4">
           {SELF_DIMENSIONS.map((d) => (
-            <div key={d} className="flex items-center justify-between gap-3 text-sm">
-              <span className="text-ink-2">{DIMENSION_META[d].label}</span>
-              <div className="flex gap-1">
-                {[1, 2, 3, 4, 5].map((n) => (
-                  <button
-                    key={n}
-                    onClick={() => setRatings({ ...ratings, [d]: n })}
-                    className={`h-7 w-7 rounded-md border text-xs font-medium ${
-                      ratings[d] === n ? "border-accent bg-accent text-white" : "border-line text-ink-2 hover:bg-surface-2"
-                    }`}
-                    aria-pressed={ratings[d] === n}
-                  >
-                    {n}
-                  </button>
-                ))}
-              </div>
-            </div>
+            <label key={d} className="block text-sm">
+              <span className="flex items-baseline justify-between gap-3">
+                <span className="text-ink-2">{DIMENSION_META[d].label}</span>
+                <span className="font-ui font-bold text-rbc-navy">
+                  {ratings[d]} <span className="font-normal text-muted">/ {CHECKIN_SCALE_MAX}</span>
+                </span>
+              </span>
+              <input
+                type="range"
+                min={1}
+                max={CHECKIN_SCALE_MAX}
+                step={1}
+                value={ratings[d]}
+                onChange={(e) => setRatings({ ...ratings, [d]: Number(e.target.value) })}
+                className="mt-1.5 w-full cursor-pointer accent-[var(--accent)]"
+                aria-valuetext={`${ratings[d]} out of ${CHECKIN_SCALE_MAX}`}
+              />
+              <span className="flex justify-between font-ui text-[11px] text-muted" aria-hidden>
+                <span>1</span>
+                <span>{CHECKIN_SCALE_MAX}</span>
+              </span>
+            </label>
           ))}
         </div>
         <label className="mt-3 block text-xs font-medium text-ink-2">

@@ -1,9 +1,10 @@
 // Slack bot → POST /api/reports
-// { slack_id | null, anonymous, category, description, urgency }
+// { slack_id | null, anonymous, category, description, urgency, name?, role? }
 // Anonymous reports are stored with user_id = null — identity is never persisted.
 import { NextResponse } from "next/server";
 import { bad, checkBotSecret } from "@/lib/auth";
 import { getStore } from "@/lib/store";
+import { resolveSlackUser } from "@/lib/ingest";
 import type { Report } from "@/lib/types";
 
 const CATEGORIES: Report["category"][] = ["Harassment", "Workload", "Team Conflict", "Other"];
@@ -21,7 +22,7 @@ export async function POST(req: Request) {
   const anonymous = Boolean(body.anonymous) || !body.slack_id;
   let user_id: string | null = null;
   if (!anonymous) {
-    const user = await store.findUserBySlackId(body.slack_id);
+    const user = await resolveSlackUser(body);
     if (!user) return bad("unknown slack_id");
     user_id = user.id;
   }

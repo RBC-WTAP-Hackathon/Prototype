@@ -1,7 +1,13 @@
-from .checkin_builder import TOPIC_OPTIONS
+# Values match the HR dashboard's report categories and urgency levels exactly.
+CATEGORY_OPTIONS = [
+    {"text": {"type": "plain_text", "text": value}, "value": value}
+    for value in ["Harassment", "Workload", "Team Conflict", "Other"]
+]
 
-REPORT_TOPIC_OPTIONS = TOPIC_OPTIONS + [
-    {"text": {"type": "plain_text", "text": "Other"}, "value": "other"},
+URGENCY_OPTIONS = [
+    {"text": {"type": "plain_text", "text": "Low - whenever HR can"}, "value": "Low"},
+    {"text": {"type": "plain_text", "text": "Medium - this week"}, "value": "Medium"},
+    {"text": {"type": "plain_text", "text": "High - needs attention now"}, "value": "High"},
 ]
 
 
@@ -38,13 +44,25 @@ def build_report_modal() -> dict:
             },
             {
                 "type": "input",
-                "block_id": "topic",
+                "block_id": "category",
                 "label": {"type": "plain_text", "text": "What's this about?"},
                 "element": {
                     "type": "static_select",
-                    "action_id": "topic_select",
-                    "placeholder": {"type": "plain_text", "text": "Pick a topic"},
-                    "options": REPORT_TOPIC_OPTIONS,
+                    "action_id": "category_select",
+                    "placeholder": {"type": "plain_text", "text": "Pick a category"},
+                    "options": CATEGORY_OPTIONS,
+                },
+            },
+            {
+                "type": "input",
+                "block_id": "urgency",
+                "label": {"type": "plain_text", "text": "How urgent is it?"},
+                "element": {
+                    "type": "static_select",
+                    "action_id": "urgency_select",
+                    "placeholder": {"type": "plain_text", "text": "Pick urgency"},
+                    "initial_option": URGENCY_OPTIONS[1],
+                    "options": URGENCY_OPTIONS,
                 },
             },
             {

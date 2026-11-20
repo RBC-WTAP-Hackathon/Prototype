@@ -13,7 +13,8 @@ import type {
   Snapshot,
   StatusAlert,
 } from "./types";
-import { DIMENSIONS, DIMENSION_META, SELF_DIMENSIONS } from "./dimensions";
+import { CHECKIN_SCALE_MAX, DIMENSIONS, DIMENSION_META, SELF_DIMENSIONS } from "./dimensions";
+import { buildInclusion } from "./inclusion";
 
 /** Departments smaller than this are hidden from the heatmap to protect anonymity. */
 export const MIN_GROUP_SIZE = 3;
@@ -27,12 +28,15 @@ export function sentimentLabel(score: number): SentimentLabel {
   return "Neutral";
 }
 
-const to100 = (rating: number) => ((rating - 1) / 4) * 100;
+/** Maps a 1..max rating onto the radar's 0–100 scale. */
+const to100 = (rating: number, max: number) => ((rating - 1) / (max - 1)) * 100;
+const PERFORMANCE_SCALE_MAX = 5;
 const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
 const round = (v: number) => Math.round(v);
 
-function weighted(values: number[]): number | null {
-  // values: most recent first
+function weighted(raw: (number | null | undefined)[]): number | null {
+  // values: most recent first; skips answers missing from older check-ins
+  const values = raw.filter((v): v is number => typeof v === "number");
   if (!values.length) return null;
   let sum = 0;
   let w = 0;
@@ -84,12 +88,14 @@ export function radarAt(
   const cs = latestPerWeek(checkins.filter((c) => c.week_number <= asOf));
   if (!cs.length) return null;
   const scores = {} as Scores;
-  for (const d of SELF_DIMENSIONS) scores[d] = round(to100(weighted(cs.map((c) => c[d]))!));
-  scores.participation = round(participationScore(new Set(cs.map((c) => c.week_number)), asOf));
+  for (const d of SELF_DIMENSIONS) {
+    const w = weighted(cs.map((c) => c[d]));
+    scores[d] = w === null ? 50 : round(to100(w, CHECKIN_SCALE_MAX));
+  }
   const rv = reviews
     .filter((r) => r.week_number <= asOf)
     .sort((a, b) => b.week_number - a.week_number || b.created_at.localeCompare(a.created_at));
-  scores.performance = rv.length ? round(to100(weighted(rv.map((r) => r.rating))!)) : 50;
+  scores.performance = rv.length ? round(to100(weighted(rv.map((r) => r.rating))!, PERFORMANCE_SCALE_MAX)) : 50;
   return scores;
 }
 
@@ -97,6 +103,7 @@ function risk(
   now: Scores,
   prev: Scores | null,
   recent: Checkin[],
+  checkinRate: number, // 0–100: how reliably they submit check-ins
 ): InternView["risk"] {
   const sat = (now.role_satisfaction + now.rbc_satisfaction) / 2;
   const satPrev = prev ? (prev.role_satisfaction + prev.rbc_satisfaction) / 2 : sat;
@@ -106,7 +113,8 @@ function risk(
   const parts = {
     satisfaction: clamp01(0.6 * ((100 - sat) / 100) + 0.4 * clamp01(satDrop / 40)),
     voice: (100 - now.voice_valued) / 100,
-    participation: (100 - now.participation) / 100,
+    // low event participation and skipped check-ins are both disengagement signals
+    participation: (100 - (now.participation + checkinRate) / 2) / 100,
     leave: leave ? 1 : 0,
   };
   const score = round(
@@ -117,7 +125,8 @@ function risk(
   if (satDrop >= 15) reasons.push(`Satisfaction ↓ ${round(satDrop)} pts in 3 weeks`);
   else if (sat < 50) reasons.push("Low satisfaction");
   if (now.voice_valued < 50) reasons.push("Doesn't feel their ideas are valued");
-  if (now.participation < 60) reasons.push("Missing check-ins");
+  if (now.participation < 50) reasons.push("Not taking part in RBC events");
+  if (checkinRate < 60) reasons.push("Missing check-ins");
   if (leave) reasons.push("Mentioned leaving / other offers");
 
   const level: RiskLevel = score >= 45 ? "High" : score >= 22 ? "Watch" : "Low";
@@ -139,12 +148,17 @@ export function buildDashboard(
       radarAt(all, reviews, currentWeek) ??
       ({ ...Object.fromEntries(DIMENSIONS.map((d) => [d, 0])) } as Scores);
     const radarPrev = currentWeek > 3 ? radarAt(all, reviews, currentWeek - 3) : null;
-    const r = risk(radar, radarPrev, cs);
+    const r = risk(radar, radarPrev, cs, participationScore(weeks, currentWeek));
     // Same calculation as of last week's summary, to detect week-over-week drops
     const lastWeek = currentWeek - 1;
     const radarLast = lastWeek >= 1 ? radarAt(all, reviews, lastWeek) : null;
     const rPrev = radarLast
-      ? risk(radarLast, lastWeek > 3 ? radarAt(all, reviews, lastWeek - 3) : null, cs.filter((c) => c.week_number <= lastWeek))
+      ? risk(
+          radarLast,
+          lastWeek > 3 ? radarAt(all, reviews, lastWeek - 3) : null,
+          cs.filter((c) => c.week_number <= lastWeek),
+          participationScore(weeks, lastWeek),
+        )
       : null;
     const lowest = DIMENSIONS.reduce((lo, d) => (radar[d] < radar[lo] ? d : lo), DIMENSIONS[0]);
 
@@ -153,8 +167,9 @@ export function buildDashboard(
       if (!evidence[k as DimensionKey] && v) evidence[k as DimensionKey] = v;
     }
 
+    const { gender: _g, ethnicity: _e, ...publicUser } = user; // self-ID stays server-side
     return {
-      user,
+      user: publicUser,
       radar,
       radarPrev,
       risk: r,
@@ -260,6 +275,7 @@ export function buildDashboard(
     heatmap,
     interns,
     alerts,
+    inclusion: buildInclusion(interns, snap.users, snap.reports),
     reports: [...snap.reports].sort(
       (a, b) =>
         Number(a.status === "Reviewed") - Number(b.status === "Reviewed") ||

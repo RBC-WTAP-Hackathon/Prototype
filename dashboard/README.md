@@ -13,14 +13,14 @@ To use Supabase: run `supabase/schema.sql` in the SQL editor, copy `.env.example
 
 | Dimension | Source |
 |---|---|
-| Role satisfaction | Slack `/checkin`, 1–5 |
-| Satisfaction with RBC | Slack `/checkin`, 1–5 |
-| Learning & growth | Slack `/checkin`, 1–5 |
-| Ideas & opinions valued | Slack `/checkin`, 1–5 |
+| Role satisfaction | Slack `/checkin`, 1–10 |
+| Satisfaction with RBC | Slack `/checkin`, 1–10 |
+| Learning & growth | Slack `/checkin`, 1–10 |
+| Ideas & opinions valued | Slack `/checkin`, 1–10 |
 | Participation | Computed: 40% overall check-in rate + 60% last 3 weeks |
 | Performance | Manager rating, 1–5 (`/api/performance`) |
 
-Each self-reported score is a recency-weighted average of the last 3 check-ins (50/30/20), mapped 1–5 → 0–100.
+Each self-reported score is a recency-weighted average of the last 3 check-ins (50/30/20), mapped 1–10 → 0–100 (manager performance ratings stay 1–5).
 
 **Risk of leaving** = 35% satisfaction (level + 3-week drop) · 25% ideas valued · 25% participation · 15% leave signal from AI.
 High ≥ 45, Watch ≥ 22. **Top talent at risk** = performance ≥ 75 and risk not Low.

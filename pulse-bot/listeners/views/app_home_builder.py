@@ -1,4 +1,4 @@
-from resources import build_resources_blocks
+from listeners.views.menu_builder import build_menu_blocks
 
 
 def build_app_home_view(
@@ -15,57 +15,26 @@ def build_app_home_view(
     blocks = [
         {
             "type": "header",
-            "text": {"type": "plain_text", "text": "Welcome to Intern Pulse :wave:"},
+            "text": {"type": "plain_text", "text": "Welcome to TalentPulse :wave:"},
         },
         {
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": (
-                    "Submit your weekly check-in, send a report to HR, or ask me "
-                    "a question about onboarding, mentorship, or wellbeing resources."
-                ),
+                "text": "Your home for checking in, getting support, and making the most of your internship. "
+                "What would you like to do?",
             },
         },
-        {
-            "type": "actions",
-            "block_id": "intern_pulse_actions",
-            "elements": [
-                {
-                    "type": "button",
-                    "action_id": "open_checkin_modal",
-                    "text": {"type": "plain_text", "text": "Submit Check-In"},
-                    "style": "primary",
-                },
-                {
-                    "type": "button",
-                    "action_id": "open_report_modal",
-                    "text": {"type": "plain_text", "text": "Submit a Report"},
-                },
-            ],
-        },
         {"type": "divider"},
-        *build_resources_blocks(),
+        *build_menu_blocks(),
         {"type": "divider"},
-        {
-            "type": "header",
-            "text": {
-                "type": "plain_text",
-                "text": "Hey there :wave: I'm your Slack assistant.",
-            },
-        },
         {
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": (
-                    "I'm here to help! You can ask me questions, have a conversation, "
-                    "or ask me to do things in Slack.\n\n"
-                    "Send me a *direct message* or *mention me in a channel* to get started."
-                ),
+                "text": "Got a question? Send me a *direct message* or *mention me in a channel* and I'll help.",
             },
         },
-        {"type": "divider"},
     ]
 
     if is_connected:

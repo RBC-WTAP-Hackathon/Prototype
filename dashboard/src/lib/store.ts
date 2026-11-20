@@ -1,13 +1,15 @@
 // Data access. Uses Supabase when SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY are set,
 // otherwise an in-memory store pre-loaded with the demo seed (resets on server restart).
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import type { Action, Checkin, PerformanceReview, Report, Snapshot } from "./types";
+import type { Action, Checkin, PerformanceReview, Report, Snapshot, User } from "./types";
 import { generateSeed } from "./seed-data";
 
 export interface Store {
   kind: "supabase" | "memory";
   snapshot(): Promise<Snapshot>;
   findUserBySlackId(slackId: string): Promise<Snapshot["users"][number] | null>;
+  insertUser(u: Omit<User, "id">): Promise<User>;
+  updateUserSelfId(id: string, selfId: Pick<User, "gender" | "ethnicity">): Promise<void>;
   insertCheckin(c: Omit<Checkin, "id">): Promise<Checkin>;
   insertReport(r: Omit<Report, "id">): Promise<Report>;
   insertReview(r: Omit<PerformanceReview, "id">): Promise<PerformanceReview>;
@@ -28,6 +30,15 @@ function memoryStore(): Store {
     },
     async findUserBySlackId(slackId) {
       return db.users.find((u) => u.slack_id === slackId) ?? null;
+    },
+    async insertUser(u) {
+      const row = { ...u, id: uid() };
+      db.users.push(row);
+      return row;
+    },
+    async updateUserSelfId(id, selfId) {
+      const u = db.users.find((x) => x.id === id);
+      if (u) Object.assign(u, selfId);
     },
     async insertCheckin(c) {
       const row = { ...c, id: uid() };
@@ -83,6 +94,10 @@ function supabaseStore(client: SupabaseClient): Store {
     },
     async findUserBySlackId(slackId) {
       return must(await client.from("users").select("*").eq("slack_id", slackId).maybeSingle());
+    },
+    insertUser: (u) => insert<User>("users", u),
+    async updateUserSelfId(id, selfId) {
+      must(await client.from("users").update(selfId).eq("id", id).select());
     },
     insertCheckin: (c) => insert<Checkin>("checkins", c),
     insertReport: (r) => insert<Report>("reports", r),

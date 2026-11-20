@@ -28,8 +28,13 @@
         "should_escape": false
       },
       {
+        "command": "/self-id",
+        "description": "Optionally share your gender and ethnicity (shown to HR only as group totals)",
+        "should_escape": false
+      },
+      {
         "command": "/help",
-        "description": "See onboarding, mentorship, and wellbeing resources",
+        "description": "Open the menu: check in, report, feedback, resources, connect",
         "should_escape": false
       },
       {

@@ -53,3 +53,31 @@ def test_build_app_home_view_connected():
     ]
     mcp_section = next(t for t in section_texts if "Slack MCP Server" in t)
     assert "connected" in mcp_section
+
+
+def test_main_menu_has_the_five_options():
+    from listeners.views.menu_builder import build_menu_blocks
+
+    action_ids = [b["accessory"]["action_id"] for b in build_menu_blocks()]
+    assert action_ids == [
+        "open_checkin_modal",
+        "open_report_modal",
+        "open_feedback_modal",
+        "open_resources",
+        "open_connect",
+    ]
+
+
+def test_app_home_shows_main_menu():
+    view = build_app_home_view()
+    action_ids = [b["accessory"]["action_id"] for b in view["blocks"] if "accessory" in b]
+    assert "open_resources" in action_ids and "open_connect" in action_ids
+
+
+def test_resource_and_connect_modals_have_unique_action_ids():
+    from listeners.views.menu_builder import build_connect_modal, build_resources_modal
+
+    for view in (build_resources_modal(), build_connect_modal()):
+        ids = [b["accessory"]["action_id"] for b in view["blocks"] if "accessory" in b]
+        assert len(ids) == len(set(ids))
+        assert len(view["blocks"]) <= 100

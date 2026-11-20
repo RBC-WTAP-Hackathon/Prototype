@@ -1,7 +1,7 @@
 // One LLM call per check-in: sentiment, topic tags, 1-sentence summary, leave signal,
 // and per-dimension evidence quotes. Falls back to a keyword heuristic with no API key,
 // so the demo never breaks on stage.
-import type { DimensionKey, SentimentLabel } from "./types";
+import type { DimensionKey, SelfDimension, SentimentLabel } from "./types";
 import { TOPICS } from "./dimensions";
 import { sentimentLabel } from "./scoring";
 
@@ -20,10 +20,11 @@ export interface CheckinInput {
   rbc_satisfaction: number;
   learning_growth: number;
   voice_valued: number;
+  participation: number;
 }
 
 const PROMPT = (c: CheckinInput) => `You analyse weekly check-ins from bank interns for an HR early-intervention tool.
-Ratings (1-5): role_satisfaction=${c.role_satisfaction}, rbc_satisfaction=${c.rbc_satisfaction}, learning_growth=${c.learning_growth}, voice_valued=${c.voice_valued}.
+Ratings (1-10, 10 = best): role_satisfaction=${c.role_satisfaction}, rbc_satisfaction=${c.rbc_satisfaction}, learning_growth=${c.learning_growth}, voice_valued=${c.voice_valued}, participation_in_rbc_events=${c.participation}.
 Feedback: """${c.feedback_text}"""
 
 Return JSON only:
@@ -115,7 +116,7 @@ const POS = /great|love|excit|inspir|learned|happy|awesome|good/i;
 function heuristic(c: CheckinInput): Analysis {
   const text = c.feedback_text ?? "";
   const avg = (c.role_satisfaction + c.rbc_satisfaction + c.learning_growth + c.voice_valued) / 4;
-  let score = (avg - 3) / 2;
+  let score = (avg - 5.5) / 4.5; // 1–10 scale → −1..1
   if (NEG.test(text)) score -= 0.25;
   if (POS.test(text)) score += 0.15;
   score = Math.max(-1, Math.min(1, score));
@@ -129,7 +130,7 @@ function heuristic(c: CheckinInput): Analysis {
   const evidence: Partial<Record<DimensionKey, string>> = {};
   for (const [dim, re] of Object.entries(DIM_CUES) as [keyof typeof DIM_CUES, RegExp][]) {
     const hit = sentences.find((s) => re.test(s));
-    if (hit && c[dim] <= 3) evidence[dim] = hit;
+    if (hit && c[dim] <= 6) evidence[dim] = hit;
   }
 
   // Summary: stitch detected signals into one HR-readable sentence
@@ -159,7 +160,8 @@ const SIGNALS: [RegExp, string][] = [
   [/recruit|other (offer|bank|compan)|tempted/i, LEAVE_PHRASE],
   [/great|love|excit|inspir|shipped/i, "energised by recent work"],
 ];
-const DIM_CUES: Record<"role_satisfaction" | "rbc_satisfaction" | "learning_growth" | "voice_valued", RegExp> = {
+const DIM_CUES: Record<SelfDimension, RegExp> = {
+  participation: /event|social|erg|town hall|info session|volunteer|networking|club|lunch and learn/i,
   role_satisfaction: /late|hours|workload|task|project|drained|rough/i,
   rbc_satisfaction: /rbc|bank|recruit|offer|return|culture/i,
   learning_growth: /learn|grow|mentor|stuck|skill/i,

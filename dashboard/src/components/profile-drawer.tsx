@@ -174,7 +174,8 @@ export function ProfileDrawer({
                   <p className="mt-1 text-sm text-ink">{c.feedback_text || <em className="text-muted">No comment</em>}</p>
                   <p className="mt-0.5 text-xs text-muted">
                     Role {c.role_satisfaction} · RBC {c.rbc_satisfaction} · Growth {c.learning_growth} · Voice{" "}
-                    {c.voice_valued} (of 5)
+                    {c.voice_valued}
+                    {c.participation != null && <> · Participation {c.participation}</>} (of 10)
                   </p>
                 </li>
               ))}

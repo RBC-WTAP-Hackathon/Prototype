@@ -1,5 +1,6 @@
 // Deterministic demo dataset: 24 fictional interns × 8 weeks.
 // Replace with an import of real participation/feedback data when available (see scripts/seed.ts).
+import { PREFER_NOT } from "./inclusion";
 import type {
   Checkin,
   DimensionKey,
@@ -47,33 +48,33 @@ interface ArchetypeSpec {
 
 const SPECS: Record<Archetype, ArchetypeSpec> = {
   thriving: {
-    base: { role_satisfaction: 4.5, rbc_satisfaction: 4.6, learning_growth: 4.5, voice_valued: 4.3 },
+    base: { role_satisfaction: 4.5, rbc_satisfaction: 4.6, learning_growth: 4.5, voice_valued: 4.3, participation: 4.3 },
     drift: {}, from: 0, perf: 4.3, miss: () => 0.03,
   },
   steady: {
-    base: { role_satisfaction: 3.8, rbc_satisfaction: 4.0, learning_growth: 3.8, voice_valued: 3.6 },
+    base: { role_satisfaction: 3.8, rbc_satisfaction: 4.0, learning_growth: 3.8, voice_valued: 3.6, participation: 3.5 },
     drift: {}, from: 0, perf: 3.6, miss: () => 0.08,
   },
   unheard: {
-    base: { role_satisfaction: 3.9, rbc_satisfaction: 4.1, learning_growth: 3.8, voice_valued: 3.7 },
-    drift: { voice_valued: -0.3, role_satisfaction: -0.08 }, from: 3, perf: 3.9, miss: () => 0.1,
+    base: { role_satisfaction: 3.9, rbc_satisfaction: 4.1, learning_growth: 3.8, voice_valued: 3.7, participation: 3.6 },
+    drift: { voice_valued: -0.3, role_satisfaction: -0.08, participation: -0.1 }, from: 3, perf: 3.9, miss: () => 0.1,
   },
   stalled: {
-    base: { role_satisfaction: 3.6, rbc_satisfaction: 4.0, learning_growth: 3.4, voice_valued: 3.5 },
+    base: { role_satisfaction: 3.6, rbc_satisfaction: 4.0, learning_growth: 3.4, voice_valued: 3.5, participation: 3.3 },
     drift: { learning_growth: -0.25, role_satisfaction: -0.1 }, from: 3, perf: 3.4, miss: () => 0.12,
   },
   overloaded: {
-    base: { role_satisfaction: 4.0, rbc_satisfaction: 4.2, learning_growth: 4.2, voice_valued: 3.8 },
-    drift: { role_satisfaction: -0.28 }, from: 4, perf: 4.0, miss: (w) => (w > 5 ? 0.3 : 0.05),
+    base: { role_satisfaction: 4.0, rbc_satisfaction: 4.2, learning_growth: 4.2, voice_valued: 3.8, participation: 3.8 },
+    drift: { role_satisfaction: -0.28, participation: -0.3 }, from: 4, perf: 4.0, miss: (w) => (w > 5 ? 0.3 : 0.05),
   },
   disengaging: {
-    base: { role_satisfaction: 3.7, rbc_satisfaction: 3.8, learning_growth: 3.6, voice_valued: 3.4 },
-    drift: { role_satisfaction: -0.25, rbc_satisfaction: -0.25, learning_growth: -0.2, voice_valued: -0.2 },
+    base: { role_satisfaction: 3.7, rbc_satisfaction: 3.8, learning_growth: 3.6, voice_valued: 3.4, participation: 3.4 },
+    drift: { role_satisfaction: -0.25, rbc_satisfaction: -0.25, learning_growth: -0.2, voice_valued: -0.2, participation: -0.3 },
     from: 4, perf: 3.3, perfDrift: -0.15, miss: (w) => (w > 5 ? 0.55 : 0.1), leaveFrom: 6,
   },
   star_at_risk: {
-    base: { role_satisfaction: 4.4, rbc_satisfaction: 4.4, learning_growth: 4.3, voice_valued: 4.0 },
-    drift: { role_satisfaction: -0.3, rbc_satisfaction: -0.25, voice_valued: -0.3 },
+    base: { role_satisfaction: 4.4, rbc_satisfaction: 4.4, learning_growth: 4.3, voice_valued: 4.0, participation: 4.2 },
+    drift: { role_satisfaction: -0.3, rbc_satisfaction: -0.25, voice_valued: -0.3, participation: -0.25 },
     from: 4, perf: 4.8, miss: () => 0.04, leaveFrom: 7,
   },
 };
@@ -158,11 +159,18 @@ const BAD: Record<Archetype, Line[]> = {
 
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
 
+const SEED_GENDERS = ["Woman", "Man", "Woman", "Man", "Non-binary", PREFER_NOT];
+const SEED_ETHNICITIES = ["East Asian", "South Asian", "White", "Black", "South Asian", "East Asian", "White", PREFER_NOT];
+
 export function generateSeed(): Snapshot {
   const rand = mulberry32(2026);
   const pick = <T,>(arr: T[]) => arr[Math.floor(rand() * arr.length)];
   const users: User[] = [];
   const checkins: Checkin[] = [];
+  // Synthetic, randomly assigned self-ID for the demo (separate RNG so ratings don't shift).
+  // ~15% leave it blank or prefer not to say, like a real voluntary survey.
+  const idRand = mulberry32(4242);
+  const idPick = (opts: string[]) => opts[Math.floor(idRand() * (opts.length - 1))]; // last is "Prefer not to say"
   const reviews: PerformanceReview[] = [];
 
   PEOPLE.forEach(([name, department, role, arch], i) => {
@@ -175,6 +183,10 @@ export function generateSeed(): Snapshot {
       department,
       cohort: COHORT,
       manager_name: MANAGERS[department],
+      // ~20% skip self-ID entirely; the rest answer both questions
+      ...(idRand() < 0.2
+        ? { gender: null, ethnicity: null }
+        : { gender: idPick(SEED_GENDERS), ethnicity: idPick(SEED_ETHNICITIES) }),
     });
     const spec = SPECS[arch];
 
@@ -185,11 +197,14 @@ export function generateSeed(): Snapshot {
       if (rand() < spec.miss(w)) continue;
 
       const r = {} as Record<SelfDimension, number>;
+      const r5 = {} as Record<SelfDimension, number>;
       for (const d of Object.keys(spec.base) as SelfDimension[]) {
         const drift = (spec.drift[d] ?? 0) * Math.max(0, w - spec.from);
-        r[d] = Math.round(clamp(spec.base[d] + drift + (rand() - 0.5) * 0.9, 1, 5));
+        // Archetypes are tuned on a 1–5 feel; stored ratings use the 1–10 check-in scale.
+        r5[d] = clamp(spec.base[d] + drift + (rand() - 0.5) * 0.9, 1, 5);
+        r[d] = Math.round(1 + ((r5[d] - 1) * 9) / 4);
       }
-      const avg = (r.role_satisfaction + r.rbc_satisfaction + r.learning_growth + r.voice_valued) / 4;
+      const avg = (r5.role_satisfaction + r5.rbc_satisfaction + r5.learning_growth + r5.voice_valued) / 4;
       const leaving = spec.leaveFrom !== undefined && w >= spec.leaveFrom;
       const pool = BAD[arch];
       const line: Line = leaving

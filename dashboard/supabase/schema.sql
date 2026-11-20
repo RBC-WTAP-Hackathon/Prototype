@@ -7,18 +7,23 @@ create table if not exists users (
   role          text,
   department    text,
   cohort        text,
-  manager_name  text
+  manager_name  text,
+  -- optional self-ID from Slack /self-id; only ever reported in aggregate (groups of 5+)
+  gender        text,
+  ethnicity     text
 );
 
 create table if not exists checkins (
   id                 text primary key default gen_random_uuid()::text,
   user_id            text not null references users(id) on delete cascade,
   week_number        int  not null,
-  -- radar dimensions, self-reported 1-5 in the Slack /checkin modal
-  role_satisfaction  int  not null check (role_satisfaction between 1 and 5),
-  rbc_satisfaction   int  not null check (rbc_satisfaction between 1 and 5),
-  learning_growth    int  not null check (learning_growth between 1 and 5),
-  voice_valued       int  not null check (voice_valued between 1 and 5),
+  -- radar dimensions, self-reported 1-10 in the Slack /checkin modal
+  role_satisfaction  int  not null check (role_satisfaction between 1 and 10),
+  rbc_satisfaction   int  not null check (rbc_satisfaction between 1 and 10),
+  learning_growth    int  not null check (learning_growth between 1 and 10),
+  voice_valued       int  not null check (voice_valued between 1 and 10),
+  -- participation in RBC events (socials, ERGs, info sessions); nullable for rows from before it was asked
+  participation      int  check (participation between 1 and 10),
   feedback_text      text,
   -- LLM enrichment
   sentiment_score    real,
