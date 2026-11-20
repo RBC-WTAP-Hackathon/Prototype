@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+/*
+ * Theme copied from jobs.rbc.com/ca/en/rbctech (computed styles of the live page).
+ * Fonts load from RBC's careers CDN — the same files that site uses.
+ */
+@font-face {
+  font-family: "RBC Text";
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://assets.phenompeople.com/CareerConnectResources/prod/RBCAA0088/canvas/font/font-1776948554160.woff2") format("woff2");
+}
+@font-face {
+  font-family: "RBC Text";
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://assets.phenompeople.com/CareerConnectResources/prod/RBCAA0088/canvas/font/font-1776948545177.woff2") format("woff2");
+}
+@font-face {
+  font-family: "RBC Text";
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://assets.phenompeople.com/CareerConnectResources/prod/RBCAA0088/canvas/font/font-1776948519345.woff2") format("woff2");
+}
+@font-face {
+  font-family: "RBC Roboto";
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://assets.phenompeople.com/CareerConnectResources/prod/RBCAA0088/canvas/font/font-1777283348520.woff2") format("woff2");
+}
+@font-face {
+  font-family: "RBC Roboto";
+  font-weight: 500;
+  font-display: swap;
+  src: url("https://assets.phenompeople.com/CareerConnectResources/prod/RBCAA0088/canvas/font/font-1777284063908.woff2") format("woff2");
+}
+@font-face {
+  font-family: "RBC Roboto";
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://assets.phenompeople.com/CareerConnectResources/prod/RBCAA0088/canvas/font/font-1777283935314.woff2") format("woff2");
+}
+
+/* The RBC site is light-only, so the dashboard is too. Charts read these via useTokens(). */
+:root {
+  color-scheme: light;
+  --page: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #e7eef1;     /* "Read More" button / quiet fills */
+  --ink: #000000;           /* nav links, job titles */
+  --ink-2: #444444;         /* body copy */
+  --muted: #6c6c6c;         /* meta text, pills */
+  --heading: #003168;       /* section headings */
+  --card-title: #0051a5;    /* card headings */
+  --grid: #e7eef1;
+  --axis: #d4d4d4;
+  --line: #d4d4d4;          /* dividers */
+  --card-border: #51b5e0;   /* commentary card outline */
+  --input-stroke: #999999;
+  /* RBC brand */
+  --rbc-blue: #0051a5;
+  --rbc-navy: #003168;
+  --rbc-navy-deep: #002249;
+  --rbc-yellow: #ffc72c;
+  --rbc-sky: #e3f4ff;
+  --rbc-footer: #006ac2;
+  --accent: #006ac3;        /* buttons + links */
+  --accent-ink: #0051a5;    /* link hover */
+  --series-1: #0051a5;
+  --series-2: #ffc72c;
+  --good: #0ca30c;
+  --good-ink: #006300;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+  --critical-ink: #b42f2f;
+  /* diverging heatmap: red ← gray → RBC blue */
+  --div-neg-2: #c43a3a;
+  --div-neg-1: #f2b3b0;
+  --div-mid: #eef2f5;
+  --div-pos-1: #b9d6f0;
+  --div-pos-2: #0051a5;
+  /* hero banner + page wash sampled from the site */
+  --hero: linear-gradient(110deg, #9edbde 0%, #a4d4b8 35%, #c8d8a2 65%, #cec34e 100%);
+  --wash: linear-gradient(180deg, #ffffff 0, #edf4e9 380px, #f1f1e3 1400px, #ffffff 2200px);
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-heading: var(--heading);
+  --color-card-title: var(--card-title);
+  --color-line: var(--line);
+  --color-card-border: var(--card-border);
+  --color-input-stroke: var(--input-stroke);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-rbc-blue: var(--rbc-blue);
+  --color-rbc-navy: var(--rbc-navy);
+  --color-rbc-navy-deep: var(--rbc-navy-deep);
+  --color-rbc-yellow: var(--rbc-yellow);
+  --color-rbc-sky: var(--rbc-sky);
+  --color-rbc-footer: var(--rbc-footer);
+  --color-good: var(--good);
+  --color-good-ink: var(--good-ink);
+  --color-warning: var(--warning);
+  --color-serious: var(--serious);
+  --color-critical: var(--critical);
+  --color-critical-ink: var(--critical-ink);
+  --font-sans: "RBC Text", "Helvetica Neue", Arial, sans-serif;
+  --font-ui: "RBC Roboto", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* square corners everywhere */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+}
+
+body {
+  background: var(--wash), var(--page);
+  color: var(--ink-2);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+}
+
+@keyframes flash {
+  from { background: color-mix(in srgb, var(--accent) 18%, transparent); }
+  to { background: transparent; }
+}
+.flash { animation: flash 2.4s ease-out; }
